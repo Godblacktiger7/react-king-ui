@@ -5,7 +5,7 @@ const Text = ({ style, className, fontSize, shadow, underline, disabled, childre
     return (
         <span
             style={{
-                fontSize: fontSize || 'unset',
+                fontSize: fontSize || 'none',
                 fontFamily: 'unset',
                 color: (disabled) ? 'var(--theme-color--disabled)' : 'var(--theme-color)',
                 textDecoration: underline ? 'underline' : 'none',
