@@ -16,18 +16,20 @@
     --theme-border-radius: .5rem;
 
     --theme-box-shadow:
-        inset 0 0 .8em .25em var(--theme-special--primary),
-        0 0 .5em .20em var(--theme-special--primary);
+        inset 0 0 .4em .125em var(--theme-special--primary),
+        0 0 .4em .15em var(--theme-special--primary);
     --theme-box-shadow--disabled:
-        inset 0 0 .8em .25em var(--theme-special--primary--disabled),
-        0 0 .5em .20em var(--theme-special--primary--disabled);
+        inset 0 0 .4em .125em var(--theme-special--primary--disabled),
+        0 0 .4em .15em var(--theme-special--primary--disabled);
 
     --theme-text-shadow:
-        0 0 .125em var(--theme-root),
-        0 0 .4em var(--theme-special--primary);
+        0 0 1em var(--theme-root),
+        0 0 .4em var(--theme-special--primary),
+        0 0 .175em var(--theme-special--primary);
     --theme-text-shadow--disabled:
-        0 0 .125em var(--theme-root),
-        0 0 .4em var(--theme-special--primary--disabled);
+        0 0 1em var(--theme-root),
+        0 0 .4em var(--theme-special--primary--disabled),
+        0 0 .175em var(--theme-special--primary--disabled);
 
     background: var(--theme-root);
     color: var(--theme-color);

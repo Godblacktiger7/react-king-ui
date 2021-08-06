@@ -13,7 +13,7 @@ export const Button = ({ style, className, shadow, disabled, children, ...props 
     return (
         <button
             style={{
-                boxShadow: (shadow) ? (disabled ? 'var(--theme-box-shadow)' : 'var(--theme-box-shadow--disabled)') : 'none',
+                boxShadow: (shadow) ? (disabled ? 'var(--theme-box-shadow--disabled)' : 'var(--theme-box-shadow)') : 'none',
                 ...style
             }}
             className={classNames.join(' ')}
