@@ -45,11 +45,3 @@
 .king-ui-btn--disabled:active {
     background: var(--theme-background--disabled);
 }
-
-.king-ui-btn-shadow {
-    box-shadow: var(--theme-box-shadow);
-}
-
-.king-ui-btn-shadow--disabled {
-    box-shadow: var(--theme-box-shadow--disabled);
-}

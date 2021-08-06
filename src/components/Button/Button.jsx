@@ -7,13 +7,13 @@ export const Button = ({ style, className, shadow, disabled, children, ...props 
     const classNames = [
         'king-ui-btn',
         (disabled) ? 'king-ui-btn--disabled' : '',
-        (shadow) ? ((disabled) ? 'king-ui-btn-shadow--disabled' : 'king-ui-btn-shadow') : '',
         className || ''
     ]
 
     return (
         <button
             style={{
+                boxShadow: (shadow) ? (disabled ? 'var(--theme-box-shadow)' : 'var(--theme-box-shadow--disabled)') : 'none',
                 ...style
             }}
             className={classNames.join(' ')}

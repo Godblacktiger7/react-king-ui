@@ -1,4 +1,5 @@
 :root {
+    --theme-root: rgba(0, 0, 0, 1);
     --theme-background: rgba(15, 15, 15, .6);
     --theme-background--disabled: rgba(0, 0, 0, .6);
     --theme-color: rgba(190, 190, 190, 1);
@@ -21,8 +22,15 @@
         inset 0 0 .8em .25em var(--theme-special--primary--disabled),
         0 0 .5em .20em var(--theme-special--primary--disabled);
 
-    background: rgba(0, 0, 0, 1);
-    color: rgba(190, 190, 190, 1);
+    --theme-text-shadow:
+        0 0 .125em var(--theme-root),
+        0 0 .4em var(--theme-special--primary);
+    --theme-text-shadow--disabled:
+        0 0 .125em var(--theme-root),
+        0 0 .4em var(--theme-special--primary--disabled);
+
+    background: var(--theme-root);
+    color: var(--theme-color);
 }
 
 body {
