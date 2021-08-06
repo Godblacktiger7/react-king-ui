@@ -12,7 +12,7 @@
     --theme-border-color--disabled: var(--theme-special--primary--disabled);
     --theme-border-style: solid;
     --theme-border-width: .123rem;
-    --theme-border-radius: .5em;
+    --theme-border-radius: .5rem;
 
     --theme-box-shadow:
         inset 0 0 .8em .25em var(--theme-special--primary),
@@ -23,6 +23,8 @@
 
     background: rgba(0, 0, 0, 1);
     color: rgba(190, 190, 190, 1);
+
+    font-size: 2vw;
 }
 
 body {
