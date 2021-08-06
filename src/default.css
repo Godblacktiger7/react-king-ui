@@ -23,13 +23,28 @@
 
     background: rgba(0, 0, 0, 1);
     color: rgba(190, 190, 190, 1);
+}
 
-    font-size: 2vw;
+@media screen and (orientation: landscape) {
+    :root {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    :root {
+        font-size: 2vh;
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    width: 0;
 }
 
 *, *::before, *::after {

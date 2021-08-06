@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import '../../default.css'
 import './button.css'
 
 export const Button = ({ style, className, shadow, disabled, children, ...props }) => {
@@ -31,7 +30,10 @@ Button.propTypes = {
     className: PropTypes.array,
     shadow: PropTypes.bool,
     disabled: PropTypes.bool,
-    children: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([
+        PropTypes.object.isRequired,
+        PropTypes.arrayOf(PropTypes.object.isRequired)
+    ])
 }
 
 export default Button
