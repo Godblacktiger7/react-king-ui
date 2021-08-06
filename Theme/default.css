@@ -30,6 +30,24 @@ body {
     padding: 0;
 }
 
+#root {
+    position: 'relative';
+
+    background: 'unset';
+    color: 'unset';
+
+    fontSize: 'unset';
+    fontFamily: 'unset';
+
+    top: 0;
+    left: 0;
+
+    width: '100%';
+    height: '100%';
+
+    userSelect: 'none';
+}
+
 *::-webkit-scrollbar {
     display: none;
     width: 0;
