@@ -1,7 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Root = ({ style, className, children, ...props }) => {
+const getFontSize = () => {
+    let screen = window.screen.availHeight
+
+    if (window.screen.availWidth < screen) screen = window.screen.availWidth
+    else screen = window.screen.availHeight
+
+    if (screen / 1080 > 1) return `${16 * (screen / 1080)}px`
+
+    return `${(16 * (screen / 1080)) * (((screen / 1080) * 2.5 <= 1) ? 2.5 : 1)}px`
+}
+
+export const Root = ({ style, className, fontSize, children, ...props }) => {
     return (
         <div
             style={{
@@ -9,12 +20,8 @@ export const Root = ({ style, className, children, ...props }) => {
                 userSelect: 'none',
                 background: 'unset',
                 color: 'unset',
-                fontSize: 'unset',
+                fontSize: fontSize || getFontSize(),
                 fontFamily: 'unset',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
                 ...style
             }}
             className={className}

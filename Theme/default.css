@@ -25,18 +25,6 @@
     color: rgba(190, 190, 190, 1);
 }
 
-@media screen and (orientation: landscape) {
-    :root {
-        font-size: 2vw;
-    }
-}
-
-@media screen and (orientation: portrait) {
-    :root {
-        font-size: 2vh;
-    }
-}
-
 body {
     margin: 0;
     padding: 0;
