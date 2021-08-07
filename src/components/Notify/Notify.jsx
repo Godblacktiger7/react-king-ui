@@ -54,6 +54,7 @@ export const notify = ({ title = null, message, level = 'info', id = 'king-ui-no
     ncRef[id].addCard(<Card cardid={cardID} key={cardID} className={className} card={card} timeout={6000} onClick={() => ncRef[id].removeCard(cardID)} />)
 }
 
+// TODO Positioning (Nav Component like)
 const NotifyContainer = ({ id }) => {
     const render = useState(false)[1]
 

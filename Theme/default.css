@@ -54,20 +54,34 @@ body {
     box-sizing: border-box;
 }
 
+.king-ui-card {
+    border: var(--theme-border-width) var(--theme-border-style) var(--theme-border-color);
+    border-radius: var(--theme-border-radius);
+    background: var(--theme-background);
+    padding: .25rem;
+    margin: .1rem;
+}
+
 .king-ui-card--info {
     border: var(--theme-border-width) var(--theme-border-style) rgba(0, 200, 0, 1);
     border-radius: var(--theme-border-radius);
     background: var(--theme-background);
+    padding: .25rem;
+    margin: .1rem;
 }
 
 .king-ui-card--warn {
     border: var(--theme-border-width) var(--theme-border-style) rgba(200, 200, 0, 1);
     border-radius: var(--theme-border-radius);
     background: var(--theme-background);
+    padding: .25rem;
+    margin: .1rem;
 }
 
 .king-ui-card--error {
     border: var(--theme-border-width) var(--theme-border-style) rgba(200, 0, 0, 1);
     border-radius: var(--theme-border-radius);
     background: var(--theme-background);
+    padding: .25rem;
+    margin: .1rem;
 }
