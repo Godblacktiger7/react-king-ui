@@ -24,8 +24,6 @@ const Nav = ({ style, className, zIndex, fontSize, shadow, position, offset, ico
     if (children) {
         if (MENUS.includes(children.displayName)) {
             throw new Error(`Invalid child for "Nav", expect one of '${MENUS.join('\', \'')}'`)
-        } else {
-            // TODO add onClick close to menu
         }
     }
 
@@ -36,7 +34,7 @@ const Nav = ({ style, className, zIndex, fontSize, shadow, position, offset, ico
 
     return (
         <>
-            {(children && open) && children}
+            {(open) && children}
             <Button
                 style={{
                     position: 'fixed',
