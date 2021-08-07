@@ -53,3 +53,21 @@ body {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
 }
+
+.king-ui-card--info {
+    border: var(--theme-border-width) var(--theme-border-style) rgba(0, 200, 0, 1);
+    border-radius: var(--theme-border-radius);
+    background: var(--theme-background);
+}
+
+.king-ui-card--warn {
+    border: var(--theme-border-width) var(--theme-border-style) rgba(200, 200, 0, 1);
+    border-radius: var(--theme-border-radius);
+    background: var(--theme-background);
+}
+
+.king-ui-card--error {
+    border: var(--theme-border-width) var(--theme-border-style) rgba(200, 0, 0, 1);
+    border-radius: var(--theme-border-radius);
+    background: var(--theme-background);
+}
