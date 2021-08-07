@@ -46,7 +46,7 @@ export const Input = ({ style, className, type, value, text, fontSize, onChange,
                     transition: 'transform .25s ease',
                     fontSize: '.9em'
                 }}
-                shadow={(value || value === 0)}
+                shadow={(value) ? true : ((value === 0) || false)}
             >
                 {text}
             </Text>
