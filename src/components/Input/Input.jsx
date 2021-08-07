@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './input.min.css'
@@ -6,12 +6,6 @@ import './input.min.css'
 import Text from '../Text/Text.jsx'
 
 export const Input = ({ style, className, type, value, text, fontSize, onChange, ...props }) => {
-    const [inputValue, setInputValue] = useState()
-
-    useEffect(() => {
-        setInputValue(() => value)
-    }, [value])
-
     return (
         <div
             style={{
@@ -39,11 +33,8 @@ export const Input = ({ style, className, type, value, text, fontSize, onChange,
                     color: 'var(--theme-input-color)'
                 }}
                 type={type}
-                value={inputValue}
-                onChange={(ev) => {
-                    if (typeof onChange === 'function') onChange(ev)
-                    else setInputValue(ev.target.value)
-                }}
+                value={value}
+                onChange={onChange}
                 {...props}
             />
             <Text
@@ -55,7 +46,7 @@ export const Input = ({ style, className, type, value, text, fontSize, onChange,
                     transition: 'transform .25s ease',
                     fontSize: '.9em'
                 }}
-                shadow={(inputValue || inputValue === 0)}
+                shadow={(value || value === 0)}
             >
                 {text}
             </Text>
