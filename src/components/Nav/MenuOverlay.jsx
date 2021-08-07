@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const NavMenuOverlay = ({ style, zIndex, space, children }) => {
+const NavMenuOverlay = ({ style, className, zIndex, space, children }) => {
     return (
         <div
             style={{
@@ -20,6 +20,7 @@ const NavMenuOverlay = ({ style, zIndex, space, children }) => {
                 height: '100vh',
                 ...style
             }}
+            className={className}
         >
             {(children instanceof Array)
                 ? (children.map((child, idx) => {
@@ -41,6 +42,7 @@ NavMenuOverlay.defaultProps = {
 
 NavMenuOverlay.propTypes = {
     style: PropTypes.object,
+    className: PropTypes.string,
     zIndex: PropTypes.number,
     space: PropTypes.string,
     children: PropTypes.oneOfType([

@@ -1,9 +1,84 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-import './input.css'
+import './input.min.css'
 
-export const Input = () => {
-    return (<>Input Component</>)
+import Text from '../Text/Text.jsx'
+
+export const Input = ({ style, className, type, value, text, fontSize, onChange, ...props }) => {
+    const [inputValue, setInputValue] = useState()
+
+    useEffect(() => {
+        setInputValue(() => value)
+    }, [value])
+
+    return (
+        <div
+            style={{
+                display: 'flex',
+                position: 'relative',
+                flexDirection: 'column',
+                textAlign: 'center',
+                padding: '1.2em 0 .2em 0',
+                fontSize: fontSize,
+                fontFamily: 'unset',
+                ...style
+            }}
+            className={`king-ui-input ${className}`}
+        >
+            <input
+                style={{
+                    width: '100%',
+                    textAlign: 'center',
+                    fontSize: '1em',
+                    fontFamily: 'unset',
+                    border: 'none',
+                    borderBottom: 'var(--theme-border-width) var(--theme-border-style) var(--theme-border-color)',
+                    borderRadius: 'var(--theme-border-radius)',
+                    background: 'var(--theme-input-background)',
+                    color: 'var(--theme-input-color)'
+                }}
+                type={type}
+                value={inputValue}
+                onChange={(ev) => {
+                    if (typeof onChange === 'function') onChange(ev)
+                    else setInputValue(ev.target.value)
+                }}
+                {...props}
+            />
+            <Text
+                style={{
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    width: '100%',
+                    top: '50%',
+                    transition: 'transform .25s ease',
+                    fontSize: '.9em'
+                }}
+                shadow={(inputValue || inputValue === 0)}
+            >
+                {text}
+            </Text>
+        </div>
+    )
+}
+
+Input.defaultProps = {
+    fontSize: 'unset',
+    type: 'text'
+}
+
+Input.propTypes = {
+    style: PropTypes.object,
+    className: PropTypes.string,
+    type: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+    text: PropTypes.string,
+    fontSize: PropTypes.string,
+    onChange: PropTypes.func
 }
 
 export default Input

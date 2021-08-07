@@ -10,7 +10,7 @@ const MENUS = [
     'NavMenuRelative'
 ]
 
-const Nav = ({ style, zIndex, fontSize, shadow, position, offset, icon, toggleMenu, children }) => {
+const Nav = ({ style, className, zIndex, fontSize, shadow, position, offset, icon, toggleMenu, children }) => {
     const [open, setOpen] = useState(toggleMenu)
     const init = useRef(true)
 
@@ -46,6 +46,7 @@ const Nav = ({ style, zIndex, fontSize, shadow, position, offset, icon, toggleMe
                     ...positions[position],
                     ...style
                 }}
+                className={className}
                 shadow={shadow}
                 onClick={() => setOpen(prev => !prev)}
             >
@@ -66,6 +67,7 @@ Nav.defaultProps = {
 
 Nav.propTypes = {
     style: PropTypes.object,
+    className: PropTypes.string,
     zIndex: PropTypes.number,
     fontSize: PropTypes.string,
     shadow: PropTypes.bool,

@@ -1,0 +1,17 @@
+.king-ui-input input[type=number]::-webkit-inner-spin-button,
+.king-ui-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.king-ui-input input:focus {
+    outline: none;
+}
+
+.king-ui-input input:focus + span {
+    transform: translateY(-1.5em);
+}
+
+.king-ui-input input:not([value=""]) + span {
+    transform: translateY(-1.5em);
+}
