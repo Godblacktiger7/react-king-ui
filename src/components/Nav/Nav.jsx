@@ -41,7 +41,7 @@ const Nav = ({ style, className, zIndex, fontSize, shadow, position, offset, ico
                     zIndex: zIndex,
                     fontSize: fontSize || 'unset',
                     fontFamily: 'unset',
-                    ...positions[position],
+                    ...(positions[position] || positions.tr),
                     ...style
                 }}
                 className={className}

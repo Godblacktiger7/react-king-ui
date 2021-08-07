@@ -43,7 +43,7 @@ Card.propTypes = {
     onClick: PropTypes.func
 }
 
-export const notify = ({ title = null, message, level = 'info', id = 'king-ui-notify', props = {} } = {}) => {
+export const notify = ({ title = null, message, level = 'info', id = 'king-ui-notify', ...props } = {}) => {
     const className = levels[level]
 
     if (!className) throw new Error(`Unknown level "${level}"`)
@@ -51,11 +51,19 @@ export const notify = ({ title = null, message, level = 'info', id = 'king-ui-no
     const cardID = ncRef[id].cards.current.length
     const card = { id: cardID, title, message }
 
-    ncRef[id].addCard(<Card cardid={cardID} key={cardID} className={className} card={card} timeout={6000} onClick={() => ncRef[id].removeCard(cardID)} />)
+    ncRef[id].addCard((
+        <Card key={cardID}
+            cardid={cardID}
+            className={className}
+            card={card}
+            timeout={6000}
+            onClick={() => ncRef[id].removeCard(cardID)}
+            {...props}
+        />
+    ))
 }
 
-// TODO Positioning (Nav Component like)
-const NotifyContainer = ({ id }) => {
+const NotifyContainer = ({ style, id, ...props }) => {
     const render = useState(false)[1]
 
     const cards = useRef([])
@@ -97,10 +105,11 @@ const NotifyContainer = ({ id }) => {
                 display: (cards.current.length) ? 'flex' : 'none',
                 position: 'absolute',
                 flexDirection: 'column',
-                top: '0',
-                left: '0',
                 overflowY: 'auto',
-                zIndex: 999
+                zIndex: 999,
+                width: '100%',
+                maxWidth: '30ch',
+                ...style
             }}
             ref={containerRef}
         >
@@ -114,6 +123,7 @@ NotifyContainer.defaultProps = {
 }
 
 NotifyContainer.propTypes = {
+    style: PropTypes.object,
     id: PropTypes.string
 }
 
