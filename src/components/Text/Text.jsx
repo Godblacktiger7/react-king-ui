@@ -28,8 +28,8 @@ Text.propTypes = {
     underline: PropTypes.bool,
     disabled: PropTypes.bool,
     children: PropTypes.oneOfType([
-        PropTypes.object.isRequired,
-        PropTypes.arrayOf(PropTypes.object.isRequired)
+        PropTypes.arrayOf(PropTypes.object.node),
+        PropTypes.node.isRequired
     ])
 }
 

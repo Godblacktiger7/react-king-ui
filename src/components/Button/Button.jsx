@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import './button.css'
 
-export const Button = ({ style, className, shadow, disabled, children, ...props }) => {
+const Button = ({ style, className, shadow, disabled, children, ...props }) => {
     const classNames = [
         'king-ui-btn',
         (disabled) ? 'king-ui-btn--disabled' : '',
@@ -31,8 +31,8 @@ Button.propTypes = {
     shadow: PropTypes.bool,
     disabled: PropTypes.bool,
     children: PropTypes.oneOfType([
-        PropTypes.object.isRequired,
-        PropTypes.arrayOf(PropTypes.object.isRequired)
+        PropTypes.arrayOf(PropTypes.object.node),
+        PropTypes.node.isRequired
     ])
 }
 

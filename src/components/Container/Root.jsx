@@ -12,7 +12,7 @@ const getFontSize = () => {
     return `${(16 * (screen / 1080)) * (((screen / 1080) * 2.5 <= 1) ? 2.5 : 1)}px`
 }
 
-export const Root = ({ style, className, fontSize, children, ...props }) => {
+const Root = ({ style, className, fontSize, children, ...props }) => {
     return (
         <div
             style={{
@@ -37,8 +37,8 @@ Root.propTypes = {
     className: PropTypes.string,
     fontSize: PropTypes.string,
     children: PropTypes.oneOfType([
-        PropTypes.object.isRequired,
-        PropTypes.arrayOf(PropTypes.object.isRequired)
+        PropTypes.arrayOf(PropTypes.object.node),
+        PropTypes.node.isRequired
     ])
 }
 
