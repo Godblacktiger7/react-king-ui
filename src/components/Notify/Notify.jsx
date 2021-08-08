@@ -10,7 +10,7 @@ const ncRef = {}
 const levels = {
     info: 'king-ui-notify--info king-ui-card--info',
     warn: 'king-ui-notify--warn king-ui-card--warn',
-    error: 'king-ui-notify--error kinf-ui-card--error'
+    error: 'king-ui-notify--error king-ui-card--error'
 }
 
 const Card = ({ className, card, timeout, onClick, ...props }) => {
