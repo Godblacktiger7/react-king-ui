@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './button.min.css'
+import './button.css'
 
 const Button = ({ style, className, shadow, disabled, children, ...props }) => {
     const classNames = [

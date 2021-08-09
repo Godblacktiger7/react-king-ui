@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './root.css'
+
 const getFontSize = () => {
     let screen = window.screen.availHeight
 
@@ -16,15 +18,10 @@ const Root = ({ style, className, fontSize, children, ...props }) => {
     return (
         <div
             style={{
-                position: 'relative',
-                userSelect: 'none',
-                background: 'unset',
-                color: 'unset',
                 fontSize: fontSize || getFontSize(),
-                fontFamily: 'unset',
                 ...style
             }}
-            className={className}
+            className={`king-ui-root ${className || ''}`}
             {...props}
         >
             {children}

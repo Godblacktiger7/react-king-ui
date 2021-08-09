@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
-import './notify.min.css'
+import './notify.css'
 
 import Text from '../Text/Text.jsx'
 
