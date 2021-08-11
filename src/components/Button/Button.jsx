@@ -27,7 +27,7 @@ const Button = ({ style, className, shadow, disabled, children, ...props }) => {
 
 Button.propTypes = {
     style: PropTypes.object,
-    className: PropTypes.array,
+    className: PropTypes.string,
     shadow: PropTypes.bool,
     disabled: PropTypes.bool,
     children: PropTypes.oneOfType([

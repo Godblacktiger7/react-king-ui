@@ -10,7 +10,6 @@ export const clearIoStorage = (endpoint, callbacksOnly = true) => {
             ioStorage[endpoint].callbacks = {}
         } else {
             if (ioStorage[endpoint].client.connected) {
-                console.log('disconnect from:', endpoint)
                 ioStorage[endpoint].client.disconnect()
             }
 
@@ -29,12 +28,10 @@ export const IoHandler = ({ endpoint, id, ...handler }) => {
         }
 
         if(!ioStorage[endpoint]) ioStorage[endpoint] = (function () {
-            console.log({ endpoint, handler })
             const io = ioClient.connect(endpoint)
             const callbacks = {}
 
             for (const [event, callback] of Object.entries(handler)) {
-                console.log('init event', event, endpoint)
                 io.on(event, (...props) => ioEventHandler(event, ...props))
                 callbacks[event] = {}
                 callbacks[event][id] = callback
@@ -46,7 +43,6 @@ export const IoHandler = ({ endpoint, id, ...handler }) => {
         else {
             for (const event of Object.keys(handler)) {
                 if (!ioStorage[endpoint].callbacks[event]) {
-                    console.log('init event', event, endpoint)
                     ioStorage[endpoint].client.on(event, (...props) => ioEventHandler(event, ...props))
                     ioStorage[endpoint].callbacks[event] = {}
                 }
