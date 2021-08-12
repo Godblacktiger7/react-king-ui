@@ -65,7 +65,7 @@
       ]
     }],
     "react/jsx-uses-react": 1,
-    "react/react-in-jsx-scope": 1,
+    "react/react-in-jsx-scope": 0,
     "no-var": "warn",
     "accessor-pairs": ["error", { "setWithoutGet": true, "enforceForClassMembers": true }],
     "array-bracket-spacing": ["error", "never"],
