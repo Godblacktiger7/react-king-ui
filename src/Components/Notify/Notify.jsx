@@ -112,6 +112,7 @@ const NotifyContainer = ({ style, id, ...props }) => {
                 ...style
             }}
             ref={containerRef}
+            {...props}
         >
             {cards.current}
         </div>
