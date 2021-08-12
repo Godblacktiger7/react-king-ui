@@ -1,14 +1,14 @@
 .king-ui-notify--info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .king-ui-notify--warn {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .king-ui-notify--error {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

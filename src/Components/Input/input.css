@@ -1,48 +1,48 @@
 .king-ui-input {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    text-align: center;
-    padding: 1.2em 0 .2em 0;
-    font-size: unset;
-    font-family: unset;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.2em 0 .2em 0;
+  font-size: unset;
+  font-family: unset;
 }
 
 .king-ui-input input {
-    text-align: center;
-    width: 100%;
-    font-size: 1em;
-    font-family: unset;
-    background: var(--theme-input-background);
-    color: var(--theme-input-color);
-    border: none;
-    border-bottom: var(--theme-border-width) var(--theme-border-style) var(--theme-border-color);
-    border-radius: var(--theme-border-radius);
+  text-align: center;
+  font-size: 1em;
+  font-family: unset;
+  background: var(--theme-input-background);
+  color: var(--theme-input-color);
+  width: 100%;
+  border: none;
+  border-bottom: var(--theme-border-width) var(--theme-border-style) var(--theme-border-color);
+  border-radius: var(--theme-border-radius);
 }
 
 .king-ui-input input[type=number]::-webkit-inner-spin-button,
 .king-ui-input input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0
+  -webkit-appearance: none;
+  margin: 0
 }
 
 .king-ui-input input:focus {
-    outline: none;
+  outline: none;
 }
 
 .king-ui-input span {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    pointer-events: none;
-    font-size: .9em;
-    transition: transform .25s ease;
+  position: absolute;
+  top: 50%;
+  font-size: .9em;
+  transition: transform .25s ease;
+  width: 100%;
+  pointer-events: none;
 }
 
 .king-ui-input input:focus + span {
-    transform: translateY(-1.5em);
+  transform: translateY(-1.5em);
 }
 
 .king-ui-input input:not([value=""]) + span {
-    transform: translateY(-1.5em);
+  transform: translateY(-1.5em);
 }

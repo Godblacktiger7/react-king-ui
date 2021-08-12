@@ -1,11 +1,8 @@
 .king-ui-root {
-    position: relative;
-
-    background: unset;
-    color: unset;
-
-    fontSize: unset;
-    fontFamily: unset;
-
-    userSelect: none;
+  position: relative;
+  user-select: none;
+  background: unset;
+  color: unset;
+  font-size: unset;
+  font-family: unset;
 }
