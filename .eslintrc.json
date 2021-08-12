@@ -37,8 +37,36 @@
   },
 
   "rules": {
+    "indent": ["error", 2, {
+      "ignoreComments": true,
+      "offsetTernaryExpressions": true,
+      "FunctionDeclaration": {
+        "body": 1,
+        "parameters": 2
+      },
+      "FunctionExpression": {
+        "body": 1,
+        "parameters": 2
+      },
+      "CallExpression": {
+        "arguments": 1
+      },
+      "ArrayExpression": 1,
+      "ObjectExpression": 1,
+      "MemberExpression": 1,
+      "outerIIFEBody": 0,
+      "VariableDeclarator": {
+        "var": 2,
+        "let": 2,
+        "const": 3
+      },
+      "SwitchCase": 1,
+      "ignoredNodes": [
+      ]
+    }],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "no-var": "warn",
-
     "accessor-pairs": ["error", { "setWithoutGet": true, "enforceForClassMembers": true }],
     "array-bracket-spacing": ["error", "never"],
     "array-callback-return": ["error", {
@@ -72,22 +100,6 @@
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "func-call-spacing": ["error", "never"],
     "generator-star-spacing": ["error", { "before": true, "after": true }],
-    "indent": ["error", 4, {
-      "SwitchCase": 1,
-      "VariableDeclarator": 1,
-      "outerIIFEBody": 1,
-      "MemberExpression": 1,
-      "FunctionDeclaration": { "parameters": 1, "body": 1 },
-      "FunctionExpression": { "parameters": 1, "body": 1 },
-      "CallExpression": { "arguments": 1 },
-      "ArrayExpression": 1,
-      "ObjectExpression": 1,
-      "ImportDeclaration": 1,
-      "flatTernaryExpressions": false,
-      "ignoreComments": false,
-      "ignoredNodes": ["TemplateLiteral *", "JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXFragment", "JSXOpeningFragment", "JSXClosingFragment", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"],
-      "offsetTernaryExpressions": true
-    }],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
@@ -218,10 +230,6 @@
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",
     "space-unary-ops": ["error", { "words": true, "nonwords": false }],
-    "spaced-comment": ["error", "always", {
-      "line": { "markers": ["*package", "!", "/", ",", "="] },
-      "block": { "balanced": true, "markers": ["*package", "!", ",", ":", "::", "flow-include"], "exceptions": ["*"] }
-    }],
     "symbol-description": "error",
     "template-curly-spacing": ["error", "never"],
     "template-tag-spacing": ["error", "never"],
