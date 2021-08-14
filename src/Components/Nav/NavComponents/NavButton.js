@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { FaAlignRight } from 'react-icons/fa'
 
@@ -13,16 +14,20 @@ const NavButton = ({
   ...props
 }) => {
   return (
-    <Button className='king-ui-nav-button'
+    <div className='king-ui-nav-button'
       style={{
         zIndex,
         ...style
       }}
-      shadow={shadow}
-      {...props}
     >
-      {children}
-    </Button>
+      <Button
+        style={{ fontSize: 'unset' }}
+        shadow={shadow}
+        {...props}
+      >
+        {children}
+      </Button>
+    </div>
   )
 }
 
@@ -32,10 +37,12 @@ NavButton.defaultProps = {
 }
 
 NavButton.propTypes = {
-  style: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  style: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
+  ),
   zIndex: PropTypes.number,
   shadow: PropTypes.bool,
   children: PropTypes.node

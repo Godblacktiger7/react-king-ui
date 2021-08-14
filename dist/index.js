@@ -1,1 +1,105 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("react"),t=require("prop-types"),n=require("socket.io-client"),o=require("react-icons/fa");function i(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var a=i(e),l=i(t),r=i(n);function s(){return(s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e}).apply(this,arguments)}function d(e,t){void 0===t&&(t={});var n=t.insertAt;if(e&&"undefined"!=typeof document){var o=document.head||document.getElementsByTagName("head")[0],i=document.createElement("style");i.type="text/css","top"===n&&o.firstChild?o.insertBefore(i,o.firstChild):o.appendChild(i),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(document.createTextNode(e))}}d(".king-ui-btn{cursor:pointer;user-select:none;background:var(--theme-background);color:var(--theme-color);font-size:unset;font-family:unset;padding:.35em .5em .2em;border:var(--theme-border-width) var(--theme-border-style) var(--theme-border-color);border-radius:var(--theme-border-radius)}.king-ui-btn:hover{background:var(--theme-special--hover)}.king-ui-btn:active{background:var(--theme-special--active)}.king-ui-btn:focus{outline:none}.king-ui-btn--disabled{cursor:default;color:var(--theme-color--disabled);border-color:var(--theme-border-color--disabled)}.king-ui-btn--disabled,.king-ui-btn--disabled:active,.king-ui-btn--disabled:hover{background:var(--theme-background--disabled)}");const u=({style:e,className:t,shadow:n,disabled:o,children:i,...l})=>{const r=["king-ui-btn",o?"king-ui-btn--disabled":"",t||""];return a.default.createElement("button",s({style:{boxShadow:n?o?"var(--theme-box-shadow--disabled)":"var(--theme-box-shadow)":"none",...e},className:r.join(" "),disabled:o},l),i)};u.propTypes={style:l.default.object,className:l.default.string,shadow:l.default.bool,disabled:l.default.bool,children:l.default.oneOfType([l.default.arrayOf(l.default.object.node),l.default.node.isRequired])};const c={_io:{},_events:{},clear:async function(){for(const e of Object.keys(this._io))this._io[e].disconnect(),this._io[e].close(),delete this._io[e]},connect:async function(e,t){if(!e){if("function"==typeof t)return t(new Error("Endpoint Missing"),null);throw new Error("Endpoint Missing!")}if(this._io[e]?this._io[e].connected?console.log(`Nothing to do for "${e}"`):(console.log(`"${e}" exists, try reconnect.`),this._io[e].connect(e)):(console.log(`Create endpoint to "${e}"`),this._io[e]=r.default(e),console.log({_io:this._io})),"function"==typeof t)return t(null,this._io[e])},disconnect:async function(e,t){},event:async function(e,t){},eventRemove:async function(e,t){}},f={},p=({endpoint:t,id:n,...o})=>(e.useEffect((()=>{function e(e,...n){for(const o of Object.values(f[t].callbacks[e]))o(...n)}if(f[t])for(const i of Object.keys(o))f[t].callbacks[i]||(f[t].client.on(i,((...t)=>e(i,...t))),f[t].callbacks[i]={}),f[t].callbacks[i][n]||(f[t].callbacks[i][n]=o[i]);else f[t]=function(){const i=r.default.connect(t),a={};for(const[t,l]of Object.entries(o))i.on(t,((...n)=>e(t,...n))),a[t]={},a[t][n]=l;return{client:i,callbacks:a}}()}),[t,o]),null);p.defaultProps={id:0},p.defaultProps={endpoint:l.default.oneOfType([l.default.arrayOf(l.default.string),l.default.string]),id:l.default.oneOfType([l.default.number,l.default.string])};d('.king-ui-input{display:flex;position:relative;flex-direction:column;text-align:center;padding:1.2em 0 .2em;font-size:unset;font-family:unset}.king-ui-input input{text-align:center;font-size:1em;font-family:unset;background:var(--theme-input-background);color:var(--theme-input-color);width:100%;border:none;border-bottom:var(--theme-border-width) var(--theme-border-style) var(--theme-border-color);border-radius:var(--theme-border-radius)}.king-ui-input input[type=number]::-webkit-inner-spin-button,.king-ui-input input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.king-ui-input input:focus{outline:none}.king-ui-input span{position:absolute;top:50%;font-size:.9em;transition:transform .25s ease;width:100%;pointer-events:none}.king-ui-input input:focus+span,.king-ui-input input:not([value=""])+span{transform:translateY(-1.5em)}');const m=({style:e,className:t,fontSize:n,shadow:o,bold:i,bolder:l,italic:r,oblique:d,underline:u,disabled:c,children:f,...p})=>a.default.createElement("span",s({style:{fontSize:n||"none",fontFamily:"unset",color:c?"var(--theme-color--disabled)":"var(--theme-color)",fontStyle:r?"italic":d?"oblique":"none",fontWeight:i?"bold":l?"bolder":"none",textDecoration:u?"underline":"none",textShadow:o?c?"var(--theme-text-shadow--disabled)":"var(--theme-text-shadow)":"none",...e},className:t},p),f);m.propTypes={style:l.default.object,className:l.default.string,fontSize:l.default.string,shadow:l.default.bool,bold:l.default.bool,bolder:l.default.bool,italic:l.default.bool,oblique:l.default.bool,underline:l.default.bool,disabled:l.default.bool,children:l.default.oneOfType([l.default.arrayOf(l.default.object.node),l.default.node.isRequired])};const g=({style:e,className:t,type:n,value:o,text:i,fontSize:l,onChange:r,...d})=>a.default.createElement("div",{style:{fontSize:l,...e},className:`king-ui-input ${t||""}`},a.default.createElement("input",s({type:n,value:o,onChange:r},d)),a.default.createElement(m,{shadow:!!o||(0===o||!1)},i));g.defaultProps={fontSize:"unset",type:"text"},g.propTypes={style:l.default.object,className:l.default.string,type:l.default.string,value:l.default.oneOfType([l.default.string,l.default.number]),text:l.default.string,fontSize:l.default.string,onChange:l.default.func};d('.king-ui-toggleswitch{position:relative;display:inline-block;font-size:1em;width:3em;height:1.59375em}.king-ui-toggleswitch input{opacity:0;width:0;height:0}.king-ui-toggleswitch span{position:absolute;cursor:pointer;top:0;right:0;bottom:0;left:0;background:var(--theme-background-light);border-radius:2rem}.king-ui-toggleswitch span:before{position:absolute;left:.1875em;bottom:.15em;transition:all .25s ease;background:var(--theme-input-color);content:"";height:1.21875em;width:1.21875em;border-radius:50%}.king-ui-toggleswitch input:checked+span:before{transform:translateX(1.21875em)}.king-ui-toggleswitch input:checked+span{background:var(--theme-special--primary)}');const b=({className:e,isToggled:t,onChange:n,...o})=>a.default.createElement("label",s({className:`king-ui-toggleswitch ${e||""}`},o),a.default.createElement("input",{type:"checkbox",checked:t,onChange:n}),a.default.createElement("span",null));b.propTypes={className:l.default.string,isToggled:l.default.bool,onChange:l.default.func};d(".king-ui-nav-button{position:fixed;z-index:100;font-size:1em;font-family:unset}.king-ui-nav-button>*{font-size:none}");const h=({style:e,zIndex:t,shadow:n,children:o,...i})=>React.createElement(u,s({className:"king-ui-nav-button",style:{zIndex:t,...e},shadow:n},i),o);h.defaultProps={children:React.createElement(o.FaAlignRight,null),shadow:!1},h.propTypes={style:l.default.oneOfType([l.default.number,l.default.string]),zIndex:l.default.number,shadow:l.default.bool,children:l.default.node};d(".king-ui-nav-overlay{display:flex;position:fixed;z-index:100;top:0;left:0;font-size:1em;font-family:unset;flex-direction:column;justify-content:center;align-items:center;background:var(--theme-background);width:100vw;height:100vh}.king-ui-nav-overlay>*{margin:.75em}");const y=({style:e,zIndex:t,children:n,...o})=>React.createElement("div",s({className:"king-ui-nav-overlay",style:{zIndex:t,...e}},o),n);y.propTypes={style:l.default.oneOfType([l.default.number,l.default.string]),zIndex:l.default.number,children:l.default.oneOfType([l.default.arrayOf(l.default.node),l.default.node])};const v=({styleOverlay:t,style:n,zIndex:o,toggleMenu:i,posNavButton:a,childrenNavButton:l,children:r,propsOverlay:d,...u})=>{const[c,f]=e.useState(i),p=e.useRef(!0),m=e.useCallback((()=>({tr:{top:".5em",right:".5em"},tl:{top:".5em",left:".5em"},br:{bottom:".5em",right:".5em"},bl:{bottom:".5em",left:".5em"}}[a])),[a]);return e.useEffect((()=>{p.current?p.current=!1:f((e=>!e))}),[i]),React.createElement(React.Fragment,null,c&&React.createElement(y,s({style:t,zIndex:o},d),r),React.createElement(h,s({style:{...n,...m},zIndex:o},u),l))};v.defaultProps={toggleMenu:!1,posNavButton:"tr"},v.propTypes={style:l.default.oneOfType([l.default.number,l.default.string]),styleOverlay:l.default.oneOfType([l.default.number,l.default.string]),zIndex:l.default.number,toggleMenu:l.default.bool,posNavButton:l.default.oneOf(["tr","tl","br","bl"]),childrenNavButton:l.default.oneOfType([l.default.arrayOf(l.default.node),l.default.node]),children:l.default.oneOfType([l.default.arrayOf(l.default.node),l.default.node]),propsOverlay:l.default.object};d(".king-ui-notify--error,.king-ui-notify--info,.king-ui-notify--warn{display:flex;flex-direction:column}");const k={},x={info:"king-ui-notify--info king-ui-card--info",warn:"king-ui-notify--warn king-ui-card--warn",error:"king-ui-notify--error king-ui-card--error"},w=({className:t,cardid:n,card:o,timeout:i,onClick:l,...r})=>(e.useEffect((()=>{setTimeout((()=>{console.log(`@TODO timeout handler for "${n}" [timeout: ${i}]`)}),i)}),[i,n]),a.default.createElement("div",s({style:{display:"flex",flexDirection:"column"},className:t,onClick:l},r),o.title&&a.default.createElement(m,{style:{margin:".5em"},fontSize:"1.3em",shadow:!0,underline:!0},o.title),o.message&&a.default.createElement(m,{style:{margin:".5em"},fontSize:".9em"},o.message)));w.propTypes={className:l.default.string,card:l.default.object,cardid:l.default.oneOfType([l.default.string.isRequired,l.default.number.isRequired]),timeout:l.default.number,onClick:l.default.func};const O=({style:t,id:n,...o})=>{const i=e.useState(!1)[1],l=e.useRef([]),r=e.useRef(null);return e.useEffect((()=>(k[n]={container:r,addCard:e=>{l.current.unshift(e),i((e=>!e))},cards:l,removeCard:e=>{let t=-1;for(const n of l.current)if(t++,n.props.cardid===e)break;l.current.splice(t,1),i((e=>!e))}},()=>{delete k[n]})),[n]),a.default.createElement("div",s({id:n,style:{display:l.current.length?"flex":"none",position:"absolute",flexDirection:"column",overflowY:"auto",zIndex:999,width:"100%",maxWidth:"30ch",...t},ref:r},o),l.current)};O.defaultProps={id:"king-ui-notify"},O.propTypes={style:l.default.object,id:l.default.string};d(".king-ui-root{position:relative;user-select:none;background:unset;color:unset;font-size:unset;font-family:unset}");const T=()=>{let e=window.screen.availHeight;return e=window.screen.availWidth<e?window.screen.availWidth:window.screen.availHeight,e/1080>1?e/1080*16+"px":e/1080*16*(e/1080*2.5<=1?2.5:1)+"px"},z=({style:e,className:t,fontSize:n,children:o,...i})=>a.default.createElement("div",s({style:{fontSize:n||T(),...e},className:`king-ui-root ${t||""}`},i),o);z.propTypes={style:l.default.object,className:l.default.string,fontSize:l.default.string,children:l.default.oneOfType([l.default.arrayOf(l.default.object.node),l.default.node.isRequired])};const E=({active:t,children:n})=>{const[o,i]=e.useState(),l=e.useRef([]);return e.useEffect((()=>{l.current=n instanceof Array?n:[n]}),[n]),e.useEffect((()=>[i((()=>l.current.filter((e=>e.props.route===t))))]),[t]),a.default.createElement(a.default.Fragment,null,o)};E.propTypes={active:l.default.string.isRequired,children:l.default.oneOfType([l.default.arrayOf(l.default.node.isRequired),l.default.node.isRequired])},exports.Button=u,exports.Input=g,exports.IoHandler=p,exports.NavMenuOverlay=v,exports.NotifyContainer=O,exports.Root=z,exports.Router=E,exports.Text=m,exports.ToggleSwitch=b,exports.clearIoStorage=(e,t=!0)=>{f[e]&&(t?f[e].callbacks={}:(f[e].client.connected&&f[e].client.disconnect(),delete f[e]))},exports.ioClient=c,exports.notify=({title:e=null,message:t,level:n="info",id:o="king-ui-notify",...i}={})=>{const l=x[n];if(!l)throw new Error(`Unknown level "${n}"`);const r=k[o].cards.current.length,d={id:r,title:e,message:t};k[o].addCard(a.default.createElement(w,s({key:r,cardid:r,className:l,card:d,timeout:6e3,onClick:()=>k[o].removeCard(r)},i)))};
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "Button", {
+  enumerable: true,
+  get: function get() {
+    return _Button["default"];
+  }
+});
+Object.defineProperty(exports, "ioClient", {
+  enumerable: true,
+  get: function get() {
+    return _ioClient["default"];
+  }
+});
+Object.defineProperty(exports, "IoHandler", {
+  enumerable: true,
+  get: function get() {
+    return _IoHandler["default"];
+  }
+});
+Object.defineProperty(exports, "clearIoStorage", {
+  enumerable: true,
+  get: function get() {
+    return _IoHandler.clearIoStorage;
+  }
+});
+Object.defineProperty(exports, "Input", {
+  enumerable: true,
+  get: function get() {
+    return _Input["default"];
+  }
+});
+Object.defineProperty(exports, "Text", {
+  enumerable: true,
+  get: function get() {
+    return _Text["default"];
+  }
+});
+Object.defineProperty(exports, "ToggleSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _ToggleSwitch["default"];
+  }
+});
+Object.defineProperty(exports, "NavMenuOverlay", {
+  enumerable: true,
+  get: function get() {
+    return _NavMenuOverlay["default"];
+  }
+});
+Object.defineProperty(exports, "NotifyContainer", {
+  enumerable: true,
+  get: function get() {
+    return _Notify["default"];
+  }
+});
+Object.defineProperty(exports, "notify", {
+  enumerable: true,
+  get: function get() {
+    return _Notify.notify;
+  }
+});
+Object.defineProperty(exports, "Root", {
+  enumerable: true,
+  get: function get() {
+    return _Root["default"];
+  }
+});
+Object.defineProperty(exports, "Router", {
+  enumerable: true,
+  get: function get() {
+    return _Router["default"];
+  }
+});
+
+var _Button = _interopRequireDefault(require("./Components/Button/Button.js"));
+
+var _ioClient = _interopRequireDefault(require("./Helpers/io-client.js"));
+
+var _IoHandler = _interopRequireWildcard(require("./Components/IO/IoHandler.js"));
+
+var _Input = _interopRequireDefault(require("./Components/Input/Input.js"));
+
+var _Text = _interopRequireDefault(require("./Components/Text/Text.js"));
+
+var _ToggleSwitch = _interopRequireDefault(require("./Components/Button/ToggleSwitch.js"));
+
+var _NavMenuOverlay = _interopRequireDefault(require("./Components/Nav/NavMenuOverlay.js"));
+
+var _Notify = _interopRequireWildcard(require("./Components/Notify/Notify.js"));
+
+var _Root = _interopRequireDefault(require("./Components/Container/Root.js"));
+
+var _Router = _interopRequireDefault(require("./Components/Router/Router.js"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

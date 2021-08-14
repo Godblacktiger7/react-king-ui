@@ -1,15 +1,14 @@
-import { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import NavButton from './NavComponents/NavButton'
 import Overlay from './NavComponents/Overlay'
 
 const NavMenuOverlay = ({
-  styleOverlay,
-  style,
   zIndex,
   toggleMenu,
-  posNavButton,
+  pos,
+  navSize,
   childrenNavButton,
   children,
   propsOverlay,
@@ -25,8 +24,8 @@ const NavMenuOverlay = ({
       tl: { top: '.5em', left: '.5em' },
       br: { bottom: '.5em', right: '.5em' },
       bl: { bottom: '.5em', left: '.5em' }
-    }[posNavButton]
-  }, [posNavButton])
+    }[pos]
+  }, [pos])
 
   useEffect(() => {
     if (init.current) init.current = false
@@ -35,17 +34,18 @@ const NavMenuOverlay = ({
 
   return (
     <>
-      {(state) && <Overlay style={styleOverlay} zIndex={zIndex} {...propsOverlay}>
+      {(state) && <Overlay zIndex={zIndex} {...propsOverlay}>
         {children}
       </Overlay>}
 
       <NavButton
+        {...props}
         style={{
-          ...style,
-          ...navButtonPosition
+          fontSize: navSize,
+          ...navButtonPosition()
         }}
         zIndex={zIndex}
-        {...props}
+        onClick={() => setState(prev => !prev)}
       >
         {childrenNavButton}
       </NavButton>
@@ -55,21 +55,24 @@ const NavMenuOverlay = ({
 
 NavMenuOverlay.defaultProps = {
   toggleMenu: false,
-  posNavButton: 'tr'
+  pos: 'tr'
 }
 
 NavMenuOverlay.propTypes = {
-  style: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  style: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
+  ),
   styleOverlay: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
   ]),
   zIndex: PropTypes.number,
+  navSize: PropTypes.string,
   toggleMenu: PropTypes.bool,
-  posNavButton: PropTypes.oneOf([
+  pos: PropTypes.oneOf([
     'tr', 'tl', 'br', 'bl'
   ]),
   childrenNavButton: PropTypes.oneOfType([

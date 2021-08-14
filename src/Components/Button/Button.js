@@ -5,9 +5,9 @@ import './button.css'
 
 const Button = ({ style, className, shadow, disabled, children, ...props }) => {
   const classNames = [
+    className || '',
     'king-ui-btn',
-    (disabled) ? 'king-ui-btn--disabled' : '',
-    className || ''
+    (disabled) ? 'king-ui-btn--disabled' : ''
   ]
 
   return (

@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './Overlay.css'
@@ -22,10 +23,12 @@ const Overlay = ({
 }
 
 Overlay.propTypes = {
-  style: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  style: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
+  ),
   zIndex: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
