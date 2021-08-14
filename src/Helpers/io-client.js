@@ -11,7 +11,7 @@ import socketIoClient from 'socket.io-client'
 // TODO remove logs after testing
 
 export const ioClient = {
-  _io: {
+  io: {
     // NOTE <id>: ioClient instance [id: endpoint]
   },
 
@@ -24,10 +24,10 @@ export const ioClient = {
    * Close and remove all io connections
    */
   clear: async function () {
-    for (const endpoint of Object.keys(this._io)) {
-      this._io[endpoint].disconnect()
-      this._io[endpoint].close()
-      delete this._io[endpoint]
+    for (const endpoint of Object.keys(this.io)) {
+      this.io[endpoint].disconnect()
+      this.io[endpoint].close()
+      delete this.io[endpoint]
     }
   },
   // ->>
@@ -35,7 +35,7 @@ export const ioClient = {
   // <<- connect [endpoint: string, callback(error, data)]
   /**
    * Connect to endpoint if not already exists.
-   * Connected instances will be stored in this._io
+   * Connected instances will be stored in this.io
    *
    * @param {string} endpoint - socket io server endpoint
    * @param {callback} callback
@@ -46,20 +46,12 @@ export const ioClient = {
       else throw new Error('Endpoint Missing!')
     }
 
-    if (!this._io[endpoint]) {
+    if (!this.io[endpoint]) {
       console.log(`Create endpoint to "${endpoint}"`)
-
-      this._io[endpoint] = socketIoClient(endpoint)
-    } else {
-      if (!this._io[endpoint].connected) {
-        console.log(`"${endpoint}" exists, try reconnect.`)
-        this._io[endpoint].connect(endpoint)
-      } else {
-        console.log(`Nothing to do for "${endpoint}"`)
-      }
+      this.io[endpoint] = socketIoClient(endpoint)
     }
 
-    if (typeof callback === 'function') return callback(null, this._io[endpoint])
+    if (typeof callback === 'function') return callback(null, this.io[endpoint])
   },
   // ->>
 
@@ -76,12 +68,14 @@ export const ioClient = {
       else throw new Error('Endpoint Missing!')
     }
 
-    if (this._io[endpoint]?.connected) {
-      this._io[endpoint].disconnect()
-      if (typeof callback === 'function') return callback(null, this._io[endpoint])
+    if (this.io[endpoint]) {
+      this.io[endpoint].disconnect()
+      if (typeof callback === 'function') return callback(null, this.io[endpoint])
     }
 
-    if (typeof callback === 'function') return callback(null, null)
+    if (typeof callback === 'function') {
+      return callback(new Error(`Endpoint not in [this.io]. (${endpoint})`), null)
+    }
   },
   // ->>
 

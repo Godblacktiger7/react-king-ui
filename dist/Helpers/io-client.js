@@ -22,7 +22,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 // TODO remove logs after testing
 var ioClient = {
-  _io: {// NOTE <id>: ioClient instance [id: endpoint]
+  io: {// NOTE <id>: ioClient instance [id: endpoint]
   },
   _events: {// NOTE <id>: { eventName: [{eventId: ..., func: [(...props) => {}, ...]}] }
   },
@@ -39,14 +39,11 @@ var ioClient = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              for (_i = 0, _Object$keys = Object.keys(this._io); _i < _Object$keys.length; _i++) {
+              for (_i = 0, _Object$keys = Object.keys(this.io); _i < _Object$keys.length; _i++) {
                 endpoint = _Object$keys[_i];
-
-                this._io[endpoint].disconnect();
-
-                this._io[endpoint].close();
-
-                delete this._io[endpoint];
+                this.io[endpoint].disconnect();
+                this.io[endpoint].close();
+                delete this.io[endpoint];
               }
 
             case 1:
@@ -68,7 +65,7 @@ var ioClient = {
 
   /**
    * Connect to endpoint if not already exists.
-   * Connected instances will be stored in this._io
+   * Connected instances will be stored in this.io
    *
    * @param {string} endpoint - socket io server endpoint
    * @param {callback} callback
@@ -95,17 +92,9 @@ var ioClient = {
               throw new Error('Endpoint Missing!');
 
             case 6:
-              if (!this._io[endpoint]) {
+              if (!this.io[endpoint]) {
                 console.log("Create endpoint to \"".concat(endpoint, "\""));
-                this._io[endpoint] = (0, _socket["default"])(endpoint);
-              } else {
-                if (!this._io[endpoint].connected) {
-                  console.log("\"".concat(endpoint, "\" exists, try reconnect."));
-
-                  this._io[endpoint].connect(endpoint);
-                } else {
-                  console.log("Nothing to do for \"".concat(endpoint, "\""));
-                }
+                this.io[endpoint] = (0, _socket["default"])(endpoint);
               }
 
               if (!(typeof callback === 'function')) {
@@ -113,7 +102,7 @@ var ioClient = {
                 break;
               }
 
-              return _context2.abrupt("return", callback(null, this._io[endpoint]));
+              return _context2.abrupt("return", callback(null, this.io[endpoint]));
 
             case 9:
             case "end":
@@ -140,8 +129,6 @@ var ioClient = {
    */
   disconnect: function () {
     var _disconnect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(endpoint, callback) {
-      var _this$_io$endpoint;
-
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -162,19 +149,19 @@ var ioClient = {
               throw new Error('Endpoint Missing!');
 
             case 6:
-              if (!((_this$_io$endpoint = this._io[endpoint]) !== null && _this$_io$endpoint !== void 0 && _this$_io$endpoint.connected)) {
+              if (!this.io[endpoint]) {
                 _context3.next = 10;
                 break;
               }
 
-              this._io[endpoint].disconnect();
+              this.io[endpoint].disconnect();
 
               if (!(typeof callback === 'function')) {
                 _context3.next = 10;
                 break;
               }
 
-              return _context3.abrupt("return", callback(null, this._io[endpoint]));
+              return _context3.abrupt("return", callback(null, this.io[endpoint]));
 
             case 10:
               if (!(typeof callback === 'function')) {
@@ -182,7 +169,7 @@ var ioClient = {
                 break;
               }
 
-              return _context3.abrupt("return", callback(null, null));
+              return _context3.abrupt("return", callback(new Error("Endpoint not in [this.io]. (".concat(endpoint, ")")), null));
 
             case 12:
             case "end":
