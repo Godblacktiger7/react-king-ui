@@ -1,0 +1,19 @@
+.king-ui-nav-overlay {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  font-size: 1em;
+  font-family: unset;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--theme-background);
+  width: 100vw;
+  height: 100vh;
+}
+
+.king-ui-nav-overlay > * {
+  margin: .75em;
+}

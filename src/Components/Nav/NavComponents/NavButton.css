@@ -1,0 +1,10 @@
+.king-ui-nav-button {
+  position: fixed;
+  z-index: 100;
+  font-size: 1em;
+  font-family: unset;
+}
+
+.king-ui-nav-button > * {
+  font-size: none;
+}

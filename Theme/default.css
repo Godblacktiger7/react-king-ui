@@ -9,15 +9,15 @@
 
 :root {
     --theme-root: rgba(0, 0, 0, 1);
-    --theme-background: rgba(15, 15, 15, .6);
-    --theme-background-light: rgba(30, 30, 30, .6);
-    --theme-background--disabled: rgba(0, 0, 0, .6);
+    --theme-background: rgba(15, 15, 15, .7);
+    --theme-background-light: rgba(30, 30, 30, .7);
+    --theme-background--disabled: rgba(0, 0, 0, .7);
     --theme-color: rgba(190, 190, 190, 1);
     --theme-color--disabled: rgba(110, 110, 110, 7);
     --theme-special--primary: rgba(15, 70, 250, 1);
-    --theme-special--primary--disabled: rgba(5, 30, 120, 1);
-    --theme-special--active: rgba(150, 0, 0, .6);
-    --theme-special--hover: rgba(50, 0, 0, .6);
+    --theme-special--primary--disabled: rgba(5, 20, 90, .8);
+    --theme-special--active: rgba(150, 0, 0, .5);
+    --theme-special--hover: rgba(50, 0, 0, .5);
 
     --theme-border-color: var(--theme-special--primary);
     --theme-border-color--disabled: var(--theme-special--primary--disabled);
@@ -25,7 +25,6 @@
     --theme-border-width: .123rem;
     --theme-border-radius: .5rem;
 
-    --theme-nav-background: var(--theme-background);
     --theme-input-background: transparent;
     --theme-input-color: rgba(255, 255, 255, 1);
 
