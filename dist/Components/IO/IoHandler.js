@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.IoHandler = exports.clearIoStorage = void 0;
+exports["default"] = exports.IoHandler = exports.ioClearStorage = exports.ioRemove = exports.ioStorage = void 0;
 
 var _react = require("react");
 
@@ -14,6 +14,10 @@ var _socket = _interopRequireDefault(require("socket.io-client"));
 var _excluded = ["endpoint", "id"];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -27,20 +31,48 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+/**
+ * ioStorage:
+ *  <endpoint>: {
+ *    client: io,
+ *    func: {
+ *      <eventName>: {
+ *        <id>: <eventHandler:func>
+ *      }
+ *    }
+ *  }
+ */
+var ioStorage = {};
+exports.ioStorage = ioStorage;
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var ioRemove = function ioRemove(id) {
+  for (var _i = 0, _Object$entries = Object.entries(ioStorage); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        endpoint = _Object$entries$_i[0],
+        _Object$entries$_i$ = _Object$entries$_i[1],
+        client = _Object$entries$_i$.client,
+        func = _Object$entries$_i$.func;
 
-var ioStorage = {}; // { client: io, callbacks: { <id>: { <event>: callback } } }
+    delete func[id];
 
-var clearIoStorage = function clearIoStorage(endpoint) {
-  var callbacksOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    if (!Object.keys(func).length) {
+      // no handlers for client
+      client.disconnect();
+      delete ioStorage[endpoint];
+    }
+  }
+};
+
+exports.ioRemove = ioRemove;
+
+var ioClearStorage = function ioClearStorage(endpoint) {
+  var handlersOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
   if (ioStorage[endpoint]) {
-    if (callbacksOnly) {
-      ioStorage[endpoint].callbacks = {};
+    if (handlersOnly) {
+      ioStorage[endpoint].func = {};
     } else {
-      if (ioStorage[endpoint].client.connected) {
+      if (!ioStorage[endpoint].client.disconnected) {
         ioStorage[endpoint].client.disconnect();
       }
 
@@ -49,7 +81,7 @@ var clearIoStorage = function clearIoStorage(endpoint) {
   }
 };
 
-exports.clearIoStorage = clearIoStorage;
+exports.ioClearStorage = ioClearStorage;
 
 var IoHandler = function IoHandler(_ref) {
   var endpoint = _ref.endpoint,
@@ -57,27 +89,32 @@ var IoHandler = function IoHandler(_ref) {
       handler = _objectWithoutProperties(_ref, _excluded);
 
   (0, _react.useEffect)(function () {
-    function ioEventHandler(event) {
-      for (var _len = arguments.length, props = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        props[_key - 1] = arguments[_key];
+    var _ioStorage$endpoint$c, _ioStorage$endpoint;
+
+    function ioEventHandler(event, id) {
+      var _ioStorage$endpoint$f;
+
+      console.log("".concat(endpoint, ": event=").concat(event, ", id=").concat(id));
+
+      for (var _len = arguments.length, props = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        props[_key - 2] = arguments[_key];
       }
 
-      for (var _i = 0, _Object$values = Object.values(ioStorage[endpoint].callbacks[event]); _i < _Object$values.length; _i++) {
-        var eventHandler = _Object$values[_i];
-        eventHandler.apply(void 0, props);
-      }
+      (_ioStorage$endpoint$f = ioStorage[endpoint].func[event])[id].apply(_ioStorage$endpoint$f, props);
     }
 
-    if (!ioStorage[endpoint]) {
+    if ((_ioStorage$endpoint$c = (_ioStorage$endpoint = ioStorage[endpoint]) === null || _ioStorage$endpoint === void 0 ? void 0 : _ioStorage$endpoint.client.disconnected) !== null && _ioStorage$endpoint$c !== void 0 ? _ioStorage$endpoint$c : true) {
+      if (ioStorage[endpoint]) delete ioStorage[endpoint];
+
       ioStorage[endpoint] = function () {
         var io = _socket["default"].connect(endpoint);
 
-        var callbacks = {};
+        var func = {};
 
         var _loop = function _loop() {
-          var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-              event = _Object$entries$_i[0],
-              callback = _Object$entries$_i[1];
+          var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+              event = _Object$entries2$_i[0],
+              callback = _Object$entries2$_i[1];
 
           io.on(event, function () {
             for (var _len2 = arguments.length, props = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
@@ -86,36 +123,36 @@ var IoHandler = function IoHandler(_ref) {
 
             return ioEventHandler.apply(void 0, [event].concat(props));
           });
-          callbacks[event] = {};
-          callbacks[event][id] = callback;
+          func[event] = {};
+          func[event][id] = callback;
         };
 
-        for (var _i2 = 0, _Object$entries = Object.entries(handler); _i2 < _Object$entries.length; _i2++) {
+        for (var _i2 = 0, _Object$entries2 = Object.entries(handler); _i2 < _Object$entries2.length; _i2++) {
           _loop();
         }
 
         return {
           client: io,
-          callbacks: callbacks
+          func: func
         };
       }();
     } else {
       var _loop2 = function _loop2() {
         var event = _Object$keys[_i3];
 
-        if (!ioStorage[endpoint].callbacks[event]) {
+        if (!ioStorage[endpoint].func[event]) {
           ioStorage[endpoint].client.on(event, function () {
             for (var _len3 = arguments.length, props = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
               props[_key3] = arguments[_key3];
             }
 
-            return ioEventHandler.apply(void 0, [event].concat(props));
+            return ioEventHandler.apply(void 0, [event, id].concat(props));
           });
-          ioStorage[endpoint].callbacks[event] = {};
+          ioStorage[endpoint].func[event] = {};
         }
 
-        if (!ioStorage[endpoint].callbacks[event][id]) {
-          ioStorage[endpoint].callbacks[event][id] = handler[event];
+        if (!ioStorage[endpoint].func[event][id]) {
+          ioStorage[endpoint].func[event][id] = handler[event];
         }
       };
 

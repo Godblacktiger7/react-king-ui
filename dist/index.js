@@ -11,24 +11,6 @@ Object.defineProperty(exports, "Button", {
     return _Button["default"];
   }
 });
-Object.defineProperty(exports, "ioClient", {
-  enumerable: true,
-  get: function get() {
-    return _ioClient["default"];
-  }
-});
-Object.defineProperty(exports, "IoHandler", {
-  enumerable: true,
-  get: function get() {
-    return _IoHandler["default"];
-  }
-});
-Object.defineProperty(exports, "clearIoStorage", {
-  enumerable: true,
-  get: function get() {
-    return _IoHandler.clearIoStorage;
-  }
-});
 Object.defineProperty(exports, "Input", {
   enumerable: true,
   get: function get() {
@@ -78,25 +60,21 @@ Object.defineProperty(exports, "Router", {
   }
 });
 
-var _Button = _interopRequireDefault(require("./Components/Button/Button.js"));
+var _Button = _interopRequireDefault(require("./Components/Button/Button"));
 
-var _ioClient = _interopRequireDefault(require("./Helpers/io-client.js"));
+var _Input = _interopRequireDefault(require("./Components/Input/Input"));
 
-var _IoHandler = _interopRequireWildcard(require("./Components/IO/IoHandler.js"));
+var _Text = _interopRequireDefault(require("./Components/Text/Text"));
 
-var _Input = _interopRequireDefault(require("./Components/Input/Input.js"));
+var _ToggleSwitch = _interopRequireDefault(require("./Components/ToggleSwitch/ToggleSwitch"));
 
-var _Text = _interopRequireDefault(require("./Components/Text/Text.js"));
+var _NavMenuOverlay = _interopRequireDefault(require("./Components/Nav/NavMenuOverlay"));
 
-var _ToggleSwitch = _interopRequireDefault(require("./Components/Button/ToggleSwitch.js"));
+var _Notify = _interopRequireWildcard(require("./Components/Notify/Notify"));
 
-var _NavMenuOverlay = _interopRequireDefault(require("./Components/Nav/NavMenuOverlay.js"));
+var _Root = _interopRequireDefault(require("./Components/Container/Root"));
 
-var _Notify = _interopRequireWildcard(require("./Components/Notify/Notify.js"));
-
-var _Root = _interopRequireDefault(require("./Components/Container/Root.js"));
-
-var _Router = _interopRequireDefault(require("./Components/Router/Router.js"));
+var _Router = _interopRequireDefault(require("./Components/Router/Router"));
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
