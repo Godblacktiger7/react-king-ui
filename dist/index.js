@@ -53,6 +53,12 @@ Object.defineProperty(exports, "Root", {
     return _Root["default"];
   }
 });
+Object.defineProperty(exports, "getFontSize", {
+  enumerable: true,
+  get: function get() {
+    return _Root.getFontSize;
+  }
+});
 Object.defineProperty(exports, "Router", {
   enumerable: true,
   get: function get() {
@@ -60,21 +66,21 @@ Object.defineProperty(exports, "Router", {
   }
 });
 
-var _Button = _interopRequireDefault(require("./Components/Button/Button"));
+var _Button = _interopRequireDefault(require("./Components/Button"));
 
-var _Input = _interopRequireDefault(require("./Components/Input/Input"));
+var _Input = _interopRequireDefault(require("./Components/Input"));
 
-var _Text = _interopRequireDefault(require("./Components/Text/Text"));
+var _Text = _interopRequireDefault(require("./Components/Text"));
 
-var _ToggleSwitch = _interopRequireDefault(require("./Components/ToggleSwitch/ToggleSwitch"));
+var _ToggleSwitch = _interopRequireDefault(require("./Components/ToggleSwitch"));
 
 var _NavMenuOverlay = _interopRequireDefault(require("./Components/Nav/NavMenuOverlay"));
 
-var _Notify = _interopRequireWildcard(require("./Components/Notify/Notify"));
+var _Notify = _interopRequireWildcard(require("./Components/Notify"));
 
-var _Root = _interopRequireDefault(require("./Components/Container/Root"));
+var _Root = _interopRequireWildcard(require("./Components/Container/Root"));
 
-var _Router = _interopRequireDefault(require("./Components/Router/Router"));
+var _Router = _interopRequireDefault(require("./Components/Router"));
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
