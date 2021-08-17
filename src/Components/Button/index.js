@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // <<- default: Button
+/**
+ * React Button Component
+ *
+ * @component
+ */
 const Button = ({
   style,
   className,
@@ -31,8 +36,17 @@ Button.propTypes = {
     PropTypes.string
   ])),
   className: PropTypes.string,
+  /**
+   * Enable Box Shadow
+   */
   shadow: PropTypes.bool,
+  /**
+   * Disable Button
+   */
   disabled: PropTypes.bool,
+  /**
+   * Everything you want
+   */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object.node),
     PropTypes.node.isRequired

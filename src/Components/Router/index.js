@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 // <<- default: Router
+/**
+ * Router for switching pages
+ *
+ * @component
+ */
 const Router = ({ active, children }) => {
   const [route, setRoute] = useState()
   const pages = useRef([])

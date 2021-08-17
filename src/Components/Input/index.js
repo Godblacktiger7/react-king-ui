@@ -4,7 +4,12 @@ import PropTypes from 'prop-types'
 import Text from '../Text'
 
 // <<- default: Input
-export const Input = ({
+/**
+ * Input element
+ *
+ * @component
+ */
+const Input = ({
   style,
   className,
   type,

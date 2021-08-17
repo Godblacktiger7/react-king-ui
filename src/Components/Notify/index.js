@@ -74,6 +74,19 @@ Card.propTypes = {
 // ->>
 
 // <<- export: func: notify
+/**
+ * @typedef {Object} Card
+ * @property {string} title
+ * @property {string} message
+ * @property {string} level - choice: 'info', 'warn', 'error'
+ * @property {Any} ...props
+ */
+/**
+ * notify function for add notification card to the NotifyContainer
+ *
+ * @function
+ * @param {Card}
+ */
 export const notify = ({
   title = null,
   message,
@@ -102,6 +115,11 @@ export const notify = ({
 // ->>
 
 // <<- default: NotifyContainer
+/**
+ * notification can be added with the notify function
+ *
+ * @component
+ */
 const NotifyContainer = ({
   style,
   id,

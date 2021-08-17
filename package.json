@@ -11,7 +11,8 @@
     "build": "babel src --out-dir dist --copy-files",
     "build:watch": "nodemon --ignore examples/ --ignore dist/ --exec babel src --out-dir dist --copy-files",
     "build:zsh:watch": "git ls-files | grep src | entr -s 'npm run build'",
-    "build:clean": "rm -rf dist/"
+    "build:clean": "rm -rf dist/",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "",
@@ -26,14 +27,18 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
+    "jsdoc": "^3.6.7",
     "nodemon": "^2.0.12",
-    "react-scripts": "^4.0.3",
     "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
     "regenerator-runtime": "^0.13.9"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-icons": "^4.2.0"
+  },
+  "dependencies": {
+    "better-docs": "^2.3.2"
   }
 }

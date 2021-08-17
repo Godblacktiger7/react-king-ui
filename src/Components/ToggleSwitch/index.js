@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // <<- default: ToggleSwitch
+/**
+ * ToggleSwitch Button (enable/disable)
+ *
+ * @component
+ */
 const ToggleSwitch = ({
   className,
   isToggled,

@@ -2,6 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // <<- export: func: getFontSize
+/**
+ * Calculate FontSize for actual resolution (in px)
+ *
+ * @function
+ * @returns {string} font-size in px (css value)
+ */
 export const getFontSize = () => {
   let screen = window.screen.availHeight
 
@@ -15,6 +21,11 @@ export const getFontSize = () => {
 // ->>
 
 // <<- default: Root
+/**
+ * Root Container (will set the fontSize based on the resolution)
+ *
+ * @component
+ */
 const Root = ({ style, className, fontSize, children, ...props }) => {
   return (
     <div

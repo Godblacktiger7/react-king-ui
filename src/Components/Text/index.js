@@ -2,6 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // <<- default: Text
+/**
+ * Text Component
+ *
+ * @component
+ */
 const Text = ({
   style,
   className,

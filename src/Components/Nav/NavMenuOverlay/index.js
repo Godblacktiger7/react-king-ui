@@ -10,6 +10,11 @@ import NavButton from './NavButton'
 import Overlay from './Overlay'
 
 // <<- default: NavMenuOverlay
+/**
+ * NavMenuOverlay (Nav button and overlay menu)
+ *
+ * @component
+ */
 const NavMenuOverlay = ({
   style,
   navPosition,
