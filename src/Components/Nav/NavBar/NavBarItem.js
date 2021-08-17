@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 // <<- default: NavBarItem
 /**
- * ### className:
- *  - __*king-ui-navbar-item*__
+ * ### className: [type: `<a></a>`]
+ *  - if active is true: __*.active*__
  *
  * @component
  */

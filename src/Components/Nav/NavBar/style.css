@@ -10,9 +10,9 @@
   width: 100%;
   height: fit-content;
   border:
-    var(--border-width)
-    var(--border-style)
-    var(--border-color);
+    var(--border-width, 2px)
+    var(--border-style, solid)
+    var(--border-color, black);
 }
 
 .king-ui-navbar > a {
