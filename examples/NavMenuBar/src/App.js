@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Text } from 'king-ui'
 import 'king-ui/Theme/DarkBlue.css'
 
+import { Root, NavBar, NavBarItem } from 'king-ui'
+
 const App = () => {
+  const [active, setActive] = useState(1)
+
   return (
-    <Text fontSize='2em' underline shadow>Nav Menu Bar Example</Text>
+    <Root>
+      <NavBar active={active}>
+        <NavBarItem onClick={() => setActive(0)}>Home</NavBarItem>
+        <NavBarItem onClick={() => setActive(1)}>News</NavBarItem>
+        <NavBarItem onClick={() => setActive(2)}>Contact</NavBarItem>
+        <NavBarItem onClick={() => setActive(3)}>About</NavBarItem>
+      </NavBar>
+    </Root>
   )
 }
 

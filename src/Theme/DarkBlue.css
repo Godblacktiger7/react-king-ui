@@ -317,7 +317,8 @@ body {
 }
 /* ->> */
 
-/* <<- king-ui-nav*/
+/* <<- king-ui-nav 'NavOverlay' */
+/* TODO: remove from Theme (???) */
 .king-ui-nav-button {
   position: fixed;
   z-index: 100;
@@ -346,5 +347,46 @@ body {
 
 .king-ui-nav-overlay > * {
   margin: .25em;
+}
+/* ->> */
+
+/* <<- king-ui-navbar */
+/* TODO: remove from Theme (???) */
+.king-ui-navbar {
+  --bg-alpha: .3;
+
+  overflow: hidden;
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  border:
+    var(--border-width)
+    var(--border-style)
+    var(--border-color);
+}
+
+.king-ui-navbar > a {
+  float: left;
+  display: block;
+  padding: .8em 1em;
+  text-align: center;
+  color: var(--color);
+}
+
+.king-ui-navbar > a:hover:not(.active) {
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  filter: var(--filter-hover);
+}
+
+.king-ui-navbar > a:active:not(.active) {
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  filter: var(--filter-active);
+}
+
+.king-ui-navbar > a.active {
+  text-decoration: underline;
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+}
+
+.king-ui-navbar > a.king-ui-navbar-icon {
+  display: none;
 }
 /* ->> */

@@ -1,4 +1,5 @@
 tests/
+docs/
 examples/
 .babelrc
 !dist/

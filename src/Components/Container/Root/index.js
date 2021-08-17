@@ -22,7 +22,10 @@ export const getFontSize = () => {
 
 // <<- default: Root
 /**
- * Root Container (will set the fontSize based on the resolution)
+ * > Root Container (will set the fontSize based on the resolution)
+ *
+ * ### className
+ *  - __*king-ui-container-root*__
  *
  * @component
  */

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 // <<- default: Text
 /**
- * Text Component
+ * ### className
+ *  - __*king-ui-text*__
+ *  - __*king-ui-text--disabled*__
  *
  * @component
  */
