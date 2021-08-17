@@ -93,9 +93,9 @@ body {
 
 .king-ui-text-shadow {
   text-shadow:
-    0 0 1em var(--bg),
-    0 0 .4em var(--text-shadow-color),
-    0 0 .175em var(--text-shadow-color);
+    0 0 .175em var(--bg),
+    0 0 .175em var(--text-shadow-color),
+    0 0 .350em var(--text-shadow-color);
 }
 /* ->> */
 
