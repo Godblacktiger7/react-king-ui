@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
  *
  * @component
  */
-// TODO add style & className
 const NavBarItem = ({ style, className, active, children, ...props }) => {
   return (
     <a
