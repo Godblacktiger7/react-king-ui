@@ -10,7 +10,7 @@
     "test": "jest",
     "build": "babel src --out-dir dist --copy-files",
     "prebuild": "npm run build:clean",
-    "build:watch": "nodemon --exec babel src --out-dir dist --copy-files",
+    "build:watch": "nodemon --ignore dist/ --exec babel src --out-dir dist --copy-files",
     "build:clean": "rm -r build/"
   },
   "keywords": [],
