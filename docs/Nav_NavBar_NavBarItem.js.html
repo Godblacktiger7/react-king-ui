@@ -103,9 +103,13 @@ import PropTypes from 'prop-types'
  *
  * @component
  */
-const NavBarItem = ({ children, active, ...props }) => {
+// TODO add style &amp; className
+const NavBarItem = ({ style, className, active, children, ...props }) => {
   return (
-    &lt;a className={(active) ? 'active' : ''} {...props}>{children}&lt;/a>
+    &lt;a
+      className={`${(active) ? 'active' : ''} ${className || ''}`}
+      {...props}
+    >{children}&lt;/a>
   )
 }
 
@@ -116,6 +120,11 @@ NavBarItem.defaultProps = {
 }
 
 NavBarItem.propTypes = {
+  style: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ])),
+  className: PropTypes.string,
   /**
    * Can be set in The 'NavBar'
    */
