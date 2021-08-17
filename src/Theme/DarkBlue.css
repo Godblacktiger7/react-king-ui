@@ -322,36 +322,3 @@ body {
   background: var(--color-secondary);
 }
 /* ->> */
-
-/* TODO: remove from Theme (???) */
-/* <<- king-ui-nav 'NavOverlay' */
-.king-ui-nav-button {
-  position: fixed;
-  z-index: 100;
-}
-
-.king-ui-nav-button button {
-  font-size: inherit;
-  font-family: inherit;
-}
-
-.king-ui-nav-overlay {
-  --btn-bg: rgba(var(--bg-rgb), var(--bg-alpha));
-
-  display: flex;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--btn-bg);
-  width: 100vw;
-  height: 100vh;
-}
-
-.king-ui-nav-overlay > * {
-  margin: .25em;
-}
-/* ->> */
