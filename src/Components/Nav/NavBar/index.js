@@ -1,17 +1,17 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
 
-import NavBarItem from './NavBarItem'
-
 // <<- default: NavBar
 /**
+ * > Navigation bar on top (desktop & mobile)
+ *
  * ### className:
  *  - __*king-ui-navbar*__
  *
  * @component
  */
-const NavBar = ({ active, children }) => {
+const NavBar = ({ style, active, className, children }) => {
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
@@ -26,21 +26,22 @@ const NavBar = ({ active, children }) => {
     if (check.length !== children.length) {
       throw new Error('Invalid NavBar items!')
     }
-  }, [children])
 
-  if (typeof active === 'number') {
-    children[active] = React.cloneElement(
-      children[active],
-      {
-        active: true
-      },
-      ...children[active].props.children
-    )
-  }
+    if (typeof active === 'number') {
+      children[active] = React.cloneElement(
+        children[active],
+        {
+          active: true
+        },
+        ...children[active].props.children
+      )
+    }
+  }, [children])
 
   return (
     <div
-      className='king-ui-navbar'
+      style={style}
+      className={`king-ui-navbar ${className || ''}`}
     >
       {children.map((child, idx) => {
         if (idx === active) {
@@ -64,6 +65,11 @@ NavBar.propTypes = {
    * set active item (children) per index
    */
   active: PropTypes.number,
+  style: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ])),
+  className: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
 // ->>
