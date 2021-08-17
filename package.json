@@ -9,9 +9,9 @@
     "lint": "eslint src/index.js",
     "test": "jest",
     "build": "babel src --out-dir dist --copy-files",
-    "prebuild": "npm run build:clean",
-    "build:watch": "nodemon --ignore dist/ --exec babel src --out-dir dist --copy-files",
-    "build:clean": "rm -r build/"
+    "build:watch": "nodemon --ignore examples/ --ignore dist/ --exec babel src --out-dir dist --copy-files",
+    "build:zsh:watch": "git ls-files | grep src | entr -s 'npm run build'",
+    "build:clean": "rm -rf dist/"
   },
   "keywords": [],
   "author": "",
