@@ -63,15 +63,15 @@ const NavBar = ({ style, className, active, children }) => {
 }
 
 NavBar.propTypes = {
-  /**
-   * set active item (children) per index
-   */
-  active: PropTypes.number,
   style: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
   ])),
   className: PropTypes.string,
+  /**
+   * set active item (children) per index
+   */
+  active: PropTypes.number,
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
 // ->>
