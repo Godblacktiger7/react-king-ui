@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
 
+import './style.css'
+
 // <<- default: NavBar
 /**
  * > Navigation bar on top (desktop & mobile)
@@ -11,7 +13,7 @@ import { FaBars } from 'react-icons/fa'
  *
  * @component
  */
-const NavBar = ({ style, active, className, children }) => {
+const NavBar = ({ style, className, active, children }) => {
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {

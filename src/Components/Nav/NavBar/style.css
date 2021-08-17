@@ -1,0 +1,44 @@
+.king-ui-navbar {
+  --bg-alpha: .3;
+
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  width: 100%;
+  height: fit-content;
+  border:
+    var(--border-width)
+    var(--border-style)
+    var(--border-color);
+}
+
+.king-ui-navbar > a {
+  float: left;
+  display: block;
+  padding: .8em 1em;
+  text-align: center;
+  color: var(--color);
+  cursor: pointer;
+}
+
+.king-ui-navbar > a:hover:not(.active) {
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  filter: var(--filter-hover);
+}
+
+.king-ui-navbar > a:active:not(.active) {
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  filter: var(--filter-active);
+}
+
+.king-ui-navbar > a.active {
+  text-decoration: underline;
+  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+}
+
+.king-ui-navbar > a.king-ui-navbar-icon {
+  display: none;
+}
