@@ -12,7 +12,7 @@
     "build:watch": "nodemon --ignore examples/ --ignore dist/ --exec babel src --out-dir dist --copy-files",
     "build:zsh:watch": "git ls-files | grep src | entr -s 'npm run build'",
     "build:clean": "rm -rf dist/",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json ./README.md"
   },
   "keywords": [],
   "author": "",
