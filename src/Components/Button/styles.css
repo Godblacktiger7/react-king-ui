@@ -6,7 +6,7 @@
 
   color: var(--btn-color);
   background: var(--btn-bg);
-  padding: 1em;
+  padding: .5em;
   overflow: hidden;
 
   border: var(--border-width) var(--border-style) var(--border-color);
