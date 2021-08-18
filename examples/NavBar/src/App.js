@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import 'king-ui/Theme/DarkBlue.css'
+import 'king-ui/Theme/darkblue.css'
 
 import { Root, NavBar, NavBarItem } from 'king-ui'
 
