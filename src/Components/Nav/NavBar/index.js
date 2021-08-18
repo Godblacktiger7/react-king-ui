@@ -4,7 +4,6 @@ import { FaBars } from 'react-icons/fa'
 
 import './style.css'
 
-// <<- default: NavBar
 /**
  * > Navigation bar on top (desktop & mobile)
  *
@@ -85,6 +84,5 @@ NavBar.propTypes = {
   active: PropTypes.number,
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
-// ->>
 
 export default NavBar

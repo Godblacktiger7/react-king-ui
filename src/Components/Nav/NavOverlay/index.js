@@ -11,7 +11,6 @@ import './style.css'
 import NavButton from './NavButton'
 import Overlay from './Overlay'
 
-// <<- default: NavOverlay
 /**
  * ### classNames:
  *  - button: __*king-ui-nav-button*__
@@ -115,6 +114,5 @@ NavOverlay.propTypes = {
     PropTypes.node
   ])
 }
-// ->>
 
 export default NavOverlay
