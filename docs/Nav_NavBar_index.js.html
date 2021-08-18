@@ -76,7 +76,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Input.html">Input</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NavBarItem.html">NavBarItem</a></li><li><a href="NavOverlay.html">NavOverlay</a></li><li><a href="NotifyContainer.html">NotifyContainer</a></li><li><a href="Root.html">Root</a></li><li><a href="Router.html">Router</a></li><li><a href="Text.html">Text</a></li><li><a href="ToggleSwitch.html">ToggleSwitch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getFontSize">getFontSize</a></li><li><a href="global.html#notify">notify</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Flex.html">Flex</a></li><li><a href="Input.html">Input</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NavBarItem.html">NavBarItem</a></li><li><a href="NavOverlay.html">NavOverlay</a></li><li><a href="NotifyContainer.html">NotifyContainer</a></li><li><a href="Root.html">Root</a></li><li><a href="Router.html">Router</a></li><li><a href="Text.html">Text</a></li><li><a href="ToggleSwitch.html">ToggleSwitch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getFontSize">getFontSize</a></li><li><a href="global.html#notify">notify</a></li></ul></div>
                 
             </nav>
         </div>
@@ -93,13 +93,12 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react'
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
 
 import './style.css'
 
-// &lt;&lt;- default: NavBar
 /**
  * > Navigation bar on top (desktop &amp; mobile)
  *
@@ -109,6 +108,9 @@ import './style.css'
  * @component
  */
 const NavBar = ({ style, className, active, children }) => {
+  // on toggle open navbar (mobile version only)
+  const [responsive, setResponsive] = useState(false)
+
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
@@ -124,6 +126,7 @@ const NavBar = ({ style, className, active, children }) => {
       throw new Error('Invalid NavBar items!')
     }
 
+    // set the active child
     if (typeof active === 'number') {
       children[active] = React.cloneElement(
         children[active],
@@ -133,12 +136,16 @@ const NavBar = ({ style, className, active, children }) => {
         ...children[active].props.children
       )
     }
-  }, [children])
+  }, [children, active])
 
+  // TODO handle onClickOutside (close)
   return (
     &lt;div
       style={style}
-      className={`king-ui-navbar ${className || ''}`}
+      className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
+      onClick={() => {
+        if (responsive) setResponsive(false)
+      }}
     >
       {children.map((child, idx) => {
         if (idx === active) {
@@ -152,7 +159,10 @@ const NavBar = ({ style, className, active, children }) => {
           )
         } else return child
       })}
-      &lt;a className='king-ui-navbar-icon'>&lt;FaBars />&lt;/a>
+      &lt;a
+        className='king-ui-navbar-icon'
+        onClick={() => setResponsive(prev => !prev)}
+      >&lt;FaBars />&lt;/a>
     &lt;/div>
   )
 }
@@ -169,7 +179,6 @@ NavBar.propTypes = {
   active: PropTypes.number,
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
-// ->>
 
 export default NavBar
 </code></pre>

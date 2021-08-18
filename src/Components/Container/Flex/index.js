@@ -1,6 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * > simple flex container (with some defaults)
+ *
+ * ### className:
+ *  - __*king-ui-flex*__
+ *
+ * @component
+ */
 const Flex = ({
   style,
   justify,

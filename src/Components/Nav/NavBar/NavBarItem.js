@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// <<- default: NavBarItem
 /**
  * ### className: [type: `<a></a>`]
  *  - if active is true: __*.active*__
@@ -38,6 +37,5 @@ NavBarItem.propTypes = {
     PropTypes.node
   ]).isRequired
 }
-// ->>
 
 export default NavBarItem

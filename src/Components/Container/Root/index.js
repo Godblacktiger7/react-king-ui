@@ -30,6 +30,7 @@ export const getFontSize = () => {
  * @component
  */
 const Root = ({ style, className, fontSize, children, ...props }) => {
+  // TODO prop for change flow from row -> col (???)
   return (
     <div
       style={{

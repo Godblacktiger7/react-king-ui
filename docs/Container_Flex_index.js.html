@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Container/Root/index.js</title>
+  <title> Container/Flex/index.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,7 +84,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>Container/Root/index.js</h1>
+                    <h1>Container/Flex/index.js</h1>
                 </header>
                 
 
@@ -96,42 +96,33 @@
             <pre class="prettyprint source linenums"><code>import React from 'react'
 import PropTypes from 'prop-types'
 
-// &lt;&lt;- export: func: getFontSize
 /**
- * Calculate FontSize for actual resolution (in px)
+ * > simple flex container (with some defaults)
  *
- * @function
- * @returns {string} font-size in px (css value)
- */
-export const getFontSize = () => {
-  let screen = window.screen.availHeight
-
-  if (window.screen.availWidth &lt; screen) screen = window.screen.availWidth
-  else screen = window.screen.availHeight
-
-  if (screen / 1080 > 1) return `${16 * (screen / 1080)}px`
-
-  return `${(16 * (screen / 1080)) * (((screen / 1080) * 2.5 &lt;= 1) ? 2.5 : 1)}px`
-}
-// ->>
-
-// &lt;&lt;- default: Root
-/**
- * > Root Container (will set the fontSize based on the resolution)
- *
- * ### className
- *  - __*king-ui-container-root*__
+ * ### className:
+ *  - __*king-ui-flex*__
  *
  * @component
  */
-const Root = ({ style, className, fontSize, children, ...props }) => {
+const Flex = ({
+  style,
+  justify,
+  align,
+  flow,
+  className,
+  children,
+  ...props
+}) => {
   return (
     &lt;div
       style={{
-        fontSize: fontSize || getFontSize(),
+        display: 'flex',
+        justifyContent: justify,
+        alignItems: align,
+        flexFlow: flow,
         ...style
       }}
-      className={`king-ui-container-root ${className || ''}`}
+      className={`king-ui-flex ${className || ''}`}
       {...props}
     >
       {children}
@@ -139,21 +130,28 @@ const Root = ({ style, className, fontSize, children, ...props }) => {
   )
 }
 
-Root.propTypes = {
+Flex.defaultProps = {
+  justify: 'center',
+  align: 'center',
+  flow: 'wrap'
+}
+
+Flex.propTypes = {
   style: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
   ])),
+  justify: PropTypes.string,
+  align: PropTypes.string,
+  flow: PropTypes.string,
   className: PropTypes.string,
-  fontSize: PropTypes.string,
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object.node),
-    PropTypes.node.isRequired
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ])
 }
-// ->>
 
-export default Root
+export default Flex
 </code></pre>
         </article>
     </section>

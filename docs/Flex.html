@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Container/Root/index.js</title>
+  <title> Flex</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -83,80 +81,256 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>Container/Root/index.js</h1>
+                    <p>Components</p>
+                    <h1>Flex</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import PropTypes from 'prop-types'
+        <h2>
+            &ltFlex <i>style</i> <i>justify</i> <i>align</i> <i>flow</i> <i>className</i> <i>children</i> /&gt
+        </h2>
+        
+    
+</header>
 
-// &lt;&lt;- export: func: getFontSize
-/**
- * Calculate FontSize for actual resolution (in px)
- *
- * @function
- * @returns {string} font-size in px (css value)
- */
-export const getFontSize = () => {
-  let screen = window.screen.availHeight
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
-  if (window.screen.availWidth &lt; screen) screen = window.screen.availWidth
-  else screen = window.screen.availHeight
 
-  if (screen / 1080 > 1) return `${16 * (screen / 1080)}px`
+    
+    <h4 class="name" id="Flex">
+        <a class="href-link" href="#Flex">#</a>
+        
+        <span class="code-name">
+            
+                &ltFlex <i>style</i> <i>justify</i> <i>align</i> <i>flow</i> <i>className</i> <i>children</i> /&gt
+            
+        </span>
+    </h4>
+    
 
-  return `${(16 * (screen / 1080)) * (((screen / 1080) * 2.5 &lt;= 1) ? 2.5 : 1)}px`
-}
-// ->>
+    
+    
+    <div class="description">
+        <blockquote>
+<p>simple flex container (with some defaults)</p>
+</blockquote>
+<h3>className:</h3>
+<ul>
+<li><strong><em>king-ui-flex</em></strong></li>
+</ul>
+    </div>
+    
 
-// &lt;&lt;- default: Root
-/**
- * > Root Container (will set the fontSize based on the resolution)
- *
- * ### className
- *  - __*king-ui-container-root*__
- *
- * @component
- */
-const Root = ({ style, className, fontSize, children, ...props }) => {
-  return (
-    &lt;div
-      style={{
-        fontSize: fontSize || getFontSize(),
-        ...style
-      }}
-      className={`king-ui-container-root ${className || ''}`}
-      {...props}
-    >
-      {children}
-    &lt;/div>
-  )
-}
 
-Root.propTypes = {
-  style: PropTypes.objectOf(PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ])),
-  className: PropTypes.string,
-  fontSize: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object.node),
-    PropTypes.node.isRequired
-  ])
-}
-// ->>
 
-export default Root
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+    
+        <h5>PropTypes:</h5>
+        
+<div class="table-container">
+  <table class="params table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th class="last">Default</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>style</code></td>
+            <td>
+              objectOf
+            </td>
+            <td>No</td>
+            <td></td>
+            <td></td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>justify</code></td>
+            <td>
+              string
+            </td>
+            <td>No</td>
+            <td></td>
+            <td>'center'</td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>align</code></td>
+            <td>
+              string
+            </td>
+            <td>No</td>
+            <td></td>
+            <td>'center'</td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>flow</code></td>
+            <td>
+              string
+            </td>
+            <td>No</td>
+            <td></td>
+            <td>'wrap'</td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>className</code></td>
+            <td>
+              string
+            </td>
+            <td>No</td>
+            <td></td>
+            <td></td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>children</code></td>
+            <td>
+              union
+            </td>
+            <td>No</td>
+            <td></td>
+            <td></td>
+          </tr>
+          
+    
+    </tbody>
+  </table>
+</div>
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Container_Flex_index.js.html" class="button">View Source</a>
+            <span>
+                <a href="Container_Flex_index.js.html">Container/Flex/index.js</a>, <a href="Container_Flex_index.js.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+        
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

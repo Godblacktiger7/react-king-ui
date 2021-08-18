@@ -18,7 +18,9 @@ const Button = ({
 }) => {
   return (
     <button
-      style={style}
+      style={{
+        ...style
+      }}
       className={`king-ui-btn ${
         (shadow)
           ? 'king-ui-box-shadow'
