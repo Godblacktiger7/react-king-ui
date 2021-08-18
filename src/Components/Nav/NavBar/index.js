@@ -19,7 +19,8 @@ const NavBar = ({ style, className, active, children }) => {
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
-      throw new Error('Children have to be from type Array!')
+      console.error('Children have to be from type Array!')
+      return
     }
 
     // check if all children are 'NavBarItems'
@@ -45,30 +46,34 @@ const NavBar = ({ style, className, active, children }) => {
 
   // TODO handle onClickOutside (close)
   return (
-    <div
-      style={style}
-      className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
-      onClick={() => {
-        if (responsive) setResponsive(false)
-      }}
-    >
-      {children.map((child, idx) => {
-        if (idx === active) {
-          return React.cloneElement(
-            child,
-            {
-              key: idx,
-              active: true
-            },
-            ...child.props.children
-          )
-        } else return child
-      })}
-      <a
-        className='king-ui-navbar-icon'
-        onClick={() => setResponsive(prev => !prev)}
-      ><FaBars /></a>
-    </div>
+    (Array.isArray(children))
+      ? (
+          <div
+            style={style}
+            className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
+            onClick={() => {
+              if (responsive) setResponsive(false)
+            }}
+          >
+            {children?.map((child, idx) => {
+              if (idx === active) {
+                return React.cloneElement(
+                  child,
+                  {
+                    key: idx,
+                    active: true
+                  },
+                  ...child.props.children
+                )
+              } else return child
+            }) || null}
+            <a
+              className='king-ui-navbar-icon'
+              onClick={() => setResponsive(prev => !prev)}
+            ><FaBars /></a>
+          </div>
+        )
+      : null
   )
 }
 
