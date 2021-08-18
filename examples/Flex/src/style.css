@@ -1,0 +1,12 @@
+.king-ui-flex {
+  border: .1px solid rgb(255,0,0);
+  height: 100vh;
+  overflow: auto;
+}
+
+.test-box {
+  padding: 1em;
+  margin: 1em;
+  width: 10ch;
+  border: .1px solid rgb(0,255,0);
+}
