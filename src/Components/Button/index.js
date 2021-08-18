@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// <<- default: Button
+import './styles.css'
+
 /**
  * React Button Component
  *
@@ -52,6 +53,5 @@ Button.propTypes = {
     PropTypes.node.isRequired
   ])
 }
-// ->>
 
 export default Button
