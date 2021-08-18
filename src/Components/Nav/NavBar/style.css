@@ -1,3 +1,4 @@
+/* TODO Add mobile mode styles */
 .king-ui-navbar {
   --bg-alpha: .3;
 
@@ -41,4 +42,33 @@
 
 .king-ui-navbar > a.king-ui-navbar-icon {
   display: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .king-ui-navbar a:not(.active) {
+    display: none;
+  }
+
+  .king-ui-navbar a.king-ui-navbar-icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .king-ui-navbar.responsive {
+    position: relative;
+  }
+
+  .king-ui-navbar.responsive a.king-ui-navbar-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .king-ui-navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
 
@@ -14,6 +14,9 @@ import './style.css'
  * @component
  */
 const NavBar = ({ style, className, active, children }) => {
+  // on toggle open navbar (mobile version only)
+  const [responsive, setResponsive] = useState(false)
+
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
@@ -29,6 +32,7 @@ const NavBar = ({ style, className, active, children }) => {
       throw new Error('Invalid NavBar items!')
     }
 
+    // set the active child
     if (typeof active === 'number') {
       children[active] = React.cloneElement(
         children[active],
@@ -38,12 +42,16 @@ const NavBar = ({ style, className, active, children }) => {
         ...children[active].props.children
       )
     }
-  }, [children])
+  }, [children, active])
 
+  // TODO handle onClickOutside (close)
   return (
     <div
       style={style}
-      className={`king-ui-navbar ${className || ''}`}
+      className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
+      onClick={() => {
+        if (responsive) setResponsive(false)
+      }}
     >
       {children.map((child, idx) => {
         if (idx === active) {
@@ -57,7 +65,10 @@ const NavBar = ({ style, className, active, children }) => {
           )
         } else return child
       })}
-      <a className='king-ui-navbar-icon'><FaBars /></a>
+      <a
+        className='king-ui-navbar-icon'
+        onClick={() => setResponsive(prev => !prev)}
+      ><FaBars /></a>
     </div>
   )
 }
