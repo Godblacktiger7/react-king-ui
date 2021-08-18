@@ -1,0 +1,25 @@
+
+> nav-bar-example@0.0.0 start
+> BROWSER=none node ../../node_modules/react-scripts/bin/react-scripts.js start
+
+[34mℹ[39m [90m｢wds｣[39m: Project is running at http://192.168.178.40/
+[34mℹ[39m [90m｢wds｣[39m: webpack output is served from 
+[34mℹ[39m [90m｢wds｣[39m: Content not from webpack is served from /home/knackwurstking/code/my.github/king-ui/examples/Flex/public
+[34mℹ[39m [90m｢wds｣[39m: 404s will fallback to /
+Starting the development server...
+
+Failed to compile.
+
+./src/App.js
+Module not found: Can't resolve 'king-ui/Theme/DarkBlue.css' in '/home/knackwurstking/code/my.github/king-ui/examples/Flex/src'
+Compiling...
+/home/knackwurstking/code/my.github/king-ui/node_modules/react-scripts/scripts/start.js:19
+  throw err;
+  ^
+
+[Error: ENOENT: no such file or directory, stat '/home/knackwurstking/.steampath'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: '/home/knackwurstking/.steampath'
+}

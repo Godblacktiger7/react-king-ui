@@ -2,4 +2,8 @@ tests/
 docs/
 examples/
 .babelrc
+.cache/
+
 !dist/
+!Theme/
+!Fonts/
