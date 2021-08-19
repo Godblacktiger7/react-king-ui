@@ -19,7 +19,7 @@ const NavBar = ({ style, className, active, children }) => {
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
-      console.error('Children have to be from type Array!')
+      console.error('[NavBar] Children have to be from type Array!')
       return
     }
 
