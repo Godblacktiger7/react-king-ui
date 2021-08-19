@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './styles.css'
+import styles from './styles.module.css'
 
 /**
  * React Button Component
@@ -18,13 +18,8 @@ const Button = ({
 }) => {
   return (
     <button
-      style={{
-        ...style
-      }}
-      className={`king-ui-btn ${
-        (shadow)
-          ? 'king-ui-box-shadow'
-          : ''} ${className || ''}`}
+      style={style}
+      className={`${styles.btn} ${(shadow) ? styles.shadow : ''} ${className || ''}`}
       disabled={disabled}
       {...props}
     >

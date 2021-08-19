@@ -1,0 +1,29 @@
+.btn {
+  color: var(--btn-color);
+  background: var(--btn-bg);
+  overflow: hidden;
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+}
+
+.btn:hover {
+  filter: var(--filter-hover);
+}
+
+.btn:focus {
+  filter: var(--filter-focus);
+  outline: none;
+}
+
+.btn:active {
+  filter: var(--filter-active);
+}
+
+.btn:disabled {
+  filter: var(--filter-disabled);
+  cursor: pointer;
+}
+
+.shadow {
+  box-shadow: var(--btn-box-shadow);
+}

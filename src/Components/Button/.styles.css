@@ -1,23 +1,18 @@
 .king-ui-btn {
-  --btn-color: var(--color);
-  --btn-bg: rgba(var(--bg-rgb), var(--bg-alpha));
-
-  cursor: pointer;
-
   color: var(--btn-color);
   background: var(--btn-bg);
-  padding: .5em;
   overflow: hidden;
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
 
-  border: var(--border-width) var(--border-style) var(--border-color);
-  border-radius: var(--border-radius);
 }
 
-.king-ui-btn:hover, .king-ui-btn:focus {
+.king-ui-btn:hover {
   filter: var(--filter-hover);
 }
 
 .king-ui-btn:focus {
+  filter: var(--filter-focus);
   outline: none;
 }
 
@@ -26,6 +21,10 @@
 }
 
 .king-ui-btn:disabled {
-  cursor: default;
   filter: var(--filter-disabled);
+  cursor: pointer;
+}
+
+.king-ui-btn-shadow {
+  box-shadow: var(--btn-box-shadow);
 }
