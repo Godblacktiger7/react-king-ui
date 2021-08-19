@@ -9,6 +9,7 @@ import './style.css'
  *
  * ### className:
  *  - __*king-ui-navbar*__
+ *  - on mobile mode icon clicked (open): __*responsive*__
  *
  * @component
  */

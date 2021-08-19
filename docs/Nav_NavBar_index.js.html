@@ -104,17 +104,29 @@ import './style.css'
  *
  * ### className:
  *  - __*king-ui-navbar*__
+ *  - on mobile mode icon clicked (open): __*responsive*__
  *
  * @component
  */
-const NavBar = ({ style, className, active, children }) => {
+const NavBar = ({
+  style,
+  className,
+  active,
+
+  // styling props
+  position,
+  fontSize,
+
+  children
+}) => {
   // on toggle open navbar (mobile version only)
   const [responsive, setResponsive] = useState(false)
 
   useEffect(() => {
     // check type of children
     if (!Array.isArray(children)) {
-      throw new Error('Children have to be from type Array!')
+      console.error('[NavBar] Children have to be from type Array!')
+      return
     }
 
     // check if all children are 'NavBarItems'
@@ -140,31 +152,60 @@ const NavBar = ({ style, className, active, children }) => {
 
   // TODO handle onClickOutside (close)
   return (
-    &lt;div
-      style={style}
-      className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
-      onClick={() => {
-        if (responsive) setResponsive(false)
-      }}
-    >
-      {children.map((child, idx) => {
-        if (idx === active) {
-          return React.cloneElement(
-            child,
-            {
-              key: idx,
-              active: true
-            },
-            ...child.props.children
-          )
-        } else return child
-      })}
-      &lt;a
-        className='king-ui-navbar-icon'
-        onClick={() => setResponsive(prev => !prev)}
-      >&lt;FaBars />&lt;/a>
-    &lt;/div>
+    (Array.isArray(children))
+      ? (
+          &lt;div
+            style={{
+              position,
+              fontSize,
+
+              top: 0,
+              right: 0,
+              left: 0,
+              zIndex: 100,
+              overflow: 'auto',
+              background: 'var(--navbar-bg)',
+              width: '100%',
+              height: 'fit-content',
+              minHeight: `calc(${fontSize} + .5rem)`,
+              border: 'var(--navbar-border, "2px solid black")',
+
+              ...style
+            }}
+            className={`king-ui-navbar ${
+              responsive ? 'responsive' : ''
+            } ${
+              className || ''
+            }`}
+            onClick={() => {
+              if (responsive) setResponsive(false)
+            }}
+          >
+            {children?.map((child, idx) => {
+              if (idx === active) {
+                return React.cloneElement(
+                  child,
+                  {
+                    key: idx,
+                    active: true
+                  },
+                  ...child.props.children
+                )
+              } else return child
+            }) || null}
+            &lt;a
+              className='king-ui-navbar-icon'
+              onClick={() => setResponsive(prev => !prev)}
+            >&lt;FaBars />&lt;/a>
+          &lt;/div>
+        )
+      : null
   )
+}
+
+NavBar.defaultProps = {
+  position: 'relative',
+  fontSize: '1rem'
 }
 
 NavBar.propTypes = {
@@ -177,6 +218,10 @@ NavBar.propTypes = {
    * set active item (children) per index
    */
   active: PropTypes.number,
+
+  position: PropTypes.string,
+  fontSize: PropTypes.string,
+
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
 
