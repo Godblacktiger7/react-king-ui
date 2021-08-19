@@ -60,7 +60,9 @@ const NavBar = ({
       ? (
           <div
             style={{
-              position: position,
+              position,
+              fontSize,
+
               top: 0,
               right: 0,
               left: 0,
@@ -71,6 +73,7 @@ const NavBar = ({
               height: 'fit-content',
               minHeight: `calc(${fontSize} + .5rem)`,
               border: 'var(--navbar-border, "2px solid black")',
+
               ...style
             }}
             className={`king-ui-navbar ${
