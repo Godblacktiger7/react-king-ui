@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
-// <<- default: Router
 /**
  * Router for switching pages
+ *
+ * > active (prop) has to match:
+ * >   - props.route (children prop)
+ * >   - name (node)
+ * >   - displayName (node)
  *
  * @component
  */
@@ -16,9 +20,16 @@ const Router = ({ active, children }) => {
   }, [children])
 
   useEffect(() => [
-    setRoute(() => pages.current.filter(child => child.props.route === active))
+    setRoute(() => pages.current.filter(
+      child => (
+        (child.props.route === active) ||
+        (child.type.displayName === active) ||
+        (child.type.name === active)
+      )
+    ))
   ], [active])
 
+  console.log(children)
   return (
     <>
       {route}
@@ -27,12 +38,14 @@ const Router = ({ active, children }) => {
 }
 
 Router.propTypes = {
+  /**
+   * node to show (props.route || name || displayName)
+   */
   active: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node.isRequired),
     PropTypes.node.isRequired
   ])
 }
-// ->>
 
 export default Router
