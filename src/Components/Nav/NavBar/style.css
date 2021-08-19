@@ -1,12 +1,14 @@
 .king-ui-navbar {
-  --bg-alpha: .3;
+  --navbar-bg: rgba(var(--color-bg-rgb), var(--bg-alpha));
+  --navbar-bg2: rgba(var(--color-secondary-rgb), var(--bg-alpha));
 
   position: relative;
   top: 0;
   right: 0;
   left: 0;
-  overflow: hidden;
-  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  z-index: 100;
+  overflow: auto;
+  background: var(--navbar-bg);
   width: 100%;
   height: fit-content;
   border:
@@ -18,25 +20,25 @@
 .king-ui-navbar > a {
   float: left;
   display: block;
-  padding: .8em 1em;
+  padding: .5rem 1rem;
   text-align: center;
   color: var(--color);
   cursor: pointer;
 }
 
 .king-ui-navbar > a:hover:not(.active) {
-  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  background: var(--navbar-bg2);
   filter: var(--filter-hover);
 }
 
 .king-ui-navbar > a:active:not(.active) {
-  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
+  background: var(--navbar-bg2);
   filter: var(--filter-active);
 }
 
 .king-ui-navbar > a.active {
+  background: var(--navbar-bg2);
   text-decoration: underline;
-  background: rgba(var(--color-secondary-rgb), var(--bg-alpha));
 }
 
 .king-ui-navbar > a.king-ui-navbar-icon {
