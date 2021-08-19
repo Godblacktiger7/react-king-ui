@@ -50,7 +50,7 @@
     0 0 .175em var(--text-shadow-color);
 
   /* Filter */
-  --filter-disabled: brightness(50%) opacity(25%);
+  --filter-disabled: brightness(50%) opacity(50%);
   --filter-hover: brightness(150%);
   --filter-focus: var(--filter-hover);
   --filter-active: brightness(75%);
