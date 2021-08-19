@@ -39,7 +39,7 @@ const Router = ({ active, children }) => {
 
 Router.propTypes = {
   /**
-   * node to show (props.route || name || displayName)
+   * active node
    */
   active: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
