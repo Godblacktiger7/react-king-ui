@@ -1,22 +1,3 @@
-.king-ui-navbar {
-  --navbar-bg: rgba(var(--color-bg-rgb), var(--bg-alpha));
-  --navbar-bg2: rgba(var(--color-secondary-rgb), var(--bg-alpha));
-
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 100;
-  overflow: auto;
-  background: var(--navbar-bg);
-  width: 100%;
-  height: fit-content;
-  border:
-    var(--border-width, 2px)
-    var(--border-style, solid)
-    var(--border-color, black);
-}
-
 .king-ui-navbar > a {
   float: left;
   display: block;

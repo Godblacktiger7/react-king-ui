@@ -12,7 +12,17 @@ import './style.css'
  *
  * @component
  */
-const NavBar = ({ style, className, active, children }) => {
+const NavBar = ({
+  style,
+  className,
+  active,
+
+  // styling props
+  position,
+  fontSize,
+
+  children
+}) => {
   // on toggle open navbar (mobile version only)
   const [responsive, setResponsive] = useState(false)
 
@@ -49,8 +59,25 @@ const NavBar = ({ style, className, active, children }) => {
     (Array.isArray(children))
       ? (
           <div
-            style={style}
-            className={`king-ui-navbar ${responsive ? 'responsive' : ''} ${className || ''}`}
+            style={{
+              position: position,
+              top: 0,
+              right: 0,
+              left: 0,
+              zIndex: 100,
+              overflow: 'auto',
+              background: 'var(--navbar-bg)',
+              width: '100%',
+              height: 'fit-content',
+              minHeight: `calc(${fontSize} + .5rem)`,
+              border: 'var(--navbar-border, "2px solid black")',
+              ...style
+            }}
+            className={`king-ui-navbar ${
+              responsive ? 'responsive' : ''
+            } ${
+              className || ''
+            }`}
             onClick={() => {
               if (responsive) setResponsive(false)
             }}
@@ -77,6 +104,11 @@ const NavBar = ({ style, className, active, children }) => {
   )
 }
 
+NavBar.defaultProps = {
+  position: 'relative',
+  fontSize: '1rem'
+}
+
 NavBar.propTypes = {
   style: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.number,
@@ -87,6 +119,10 @@ NavBar.propTypes = {
    * set active item (children) per index
    */
   active: PropTypes.number,
+
+  position: PropTypes.string,
+  fontSize: PropTypes.string,
+
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
 
