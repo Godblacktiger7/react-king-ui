@@ -29,7 +29,6 @@ const Router = ({ active, children }) => {
     ))
   ], [active])
 
-  console.log(children)
   return (
     <>
       {route}
