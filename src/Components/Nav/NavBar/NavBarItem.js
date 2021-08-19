@@ -7,7 +7,13 @@ import PropTypes from 'prop-types'
  *
  * @component
  */
-const NavBarItem = ({ style, className, active, children, ...props }) => {
+const NavBarItem = ({
+  style,
+  className,
+  active,
+  children,
+  ...props
+}) => {
   return (
     <a
       className={`${(active) ? 'active' : ''} ${className || ''}`}

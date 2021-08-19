@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 
 import Text from '../Text'
 
-// <<- default: Input
 /**
- * Input element
- *
  * @component
  */
 const Input = ({
@@ -48,6 +45,9 @@ Input.defaultProps = {
 }
 
 Input.propTypes = {
+  /**
+   * div, input, text
+   */
   style: PropTypes.shape({
     div: PropTypes.objectOf(PropTypes.oneOfType([
       PropTypes.number,
@@ -71,6 +71,5 @@ Input.propTypes = {
   text: PropTypes.string,
   fontSize: PropTypes.string
 }
-// ->>
 
 export default Input
