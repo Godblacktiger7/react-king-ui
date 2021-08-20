@@ -26,7 +26,7 @@ import styles from './styles.module.css'
 const NavOverlay = ({
   button,
   overlay,
-  navPosition,
+  position,
   toggleOverlay,
   children
 }) => {
@@ -39,33 +39,35 @@ const NavOverlay = ({
     else setState(prev => !prev)
   }, [toggleOverlay])
 
-  useEffect(() => {
-    button.className = classNames(
-      styles[navPosition] || styles.tr,
-      styles.navbutton,
-      (button.className) && button.className
-    )
-  }, [button])
-
-  useEffect(() => {
-    overlay.className = classNames(
-      styles.overlay,
-      (overlay.className) && overlay.className
-    )
-  }, [overlay])
-
   return (
     <>
       {(state) && (
         <Overlay
-          {...overlay}
+          {...{
+            ...overlay,
+            className: classNames(
+              styles.overlay,
+              (overlay.className) && overlay.className
+            )
+          }}
         >
           {children}
         </Overlay>
       )}
 
       <NavButton
-        {...{ ...button, onClick: () => setState(prev => !prev) }}
+        {...{
+          ...button,
+          className: classNames(
+            styles.navbutton,
+            (button.className) && button.className
+          ),
+          style: {
+            ...button.style,
+            ...position
+          },
+          onClick: () => setState(prev => !prev)
+        }}
       />
     </>
   )
@@ -74,36 +76,33 @@ const NavOverlay = ({
 NavOverlay.defaultProps = {
   overlay: {},
   button: {},
-  navPosition: 'tr',
+  position: { top: '.5rem', right: '.5rem' },
   zIndex: 100,
   toggleOverlay: false
 }
 
 NavOverlay.propTypes = {
   /**
-   * nav button props
+   * nav button component props
    */
   button: PropTypes.object,
 
   /**
-   * nav overlay props
+   * nav overlay component props
    */
   overlay: PropTypes.object,
 
   /**
-   * 'tr', 'tl', 'br', 'bl'
+   * button position
+   * css: top, right, left, bottom
    */
-  navPosition: PropTypes.oneOf([
-    'tr', 'tl', 'br', 'bl'
-  ]),
+  position: PropTypes.object,
 
   /**
    * every time this prop changes the overlay will open/close
    */
   toggleOverlay: PropTypes.bool,
 
-  buttonProps: PropTypes.object,
-  overlayProps: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node

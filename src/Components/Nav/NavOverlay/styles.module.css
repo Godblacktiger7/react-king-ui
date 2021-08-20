@@ -1,23 +1,3 @@
-.tr {
-  top: .5rem;
-  right: .5rem;
-}
-
-.tl {
-  top: .5rem;
-  left: .5rem;
-}
-
-.br {
-  bottom: .5rem;
-  right: .5rem;
-}
-
-.bl {
-  bottom: .5rem;
-  left: .5rem;
-}
-
 .navbutton {
   position: fixed;
   z-index: 100;

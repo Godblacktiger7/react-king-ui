@@ -9,7 +9,6 @@ const NavButton = ({
   className,
   ...props
 }) => {
-  console.log({ style, className, props })
   return (
     <div className={className} style={style}>
       <Button {...props}>

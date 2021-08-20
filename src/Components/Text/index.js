@@ -26,7 +26,7 @@ const Text = ({
   return (
     <span
       style={{
-        fontSize: fontSize || '1rem',
+        fontSize: fontSize || 'inherit',
         fontStyle: (italic)
           ? 'italic'
           : (
