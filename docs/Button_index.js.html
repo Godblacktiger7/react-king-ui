@@ -95,11 +95,23 @@
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-import './styles.css'
+import styles from './styles.module.css'
 
 /**
  * React Button Component
+ *
+ * ### Theme variables in use:
+ *  - --btn-color
+ *  - --btn-bg
+ *  - --btn-border
+ *  - --btn-border-radius
+ *  - :hover: --filter-hover
+ *  - :focus: --filter-focus
+ *  - :active: --filter-active
+ *  - :disabled: --filter-disabled
+ *  - *shadow*: --btn-box-shadow
  *
  * @component
  */
@@ -113,13 +125,12 @@ const Button = ({
 }) => {
   return (
     &lt;button
-      style={{
-        ...style
-      }}
-      className={`king-ui-btn ${
-        (shadow)
-          ? 'king-ui-box-shadow'
-          : ''} ${className || ''}`}
+      style={style}
+      className={classNames(
+        styles.btn,
+        (shadow) &amp;&amp; styles.shadow,
+        (className) &amp;&amp; className
+      )}
       disabled={disabled}
       {...props}
     >
@@ -134,17 +145,17 @@ Button.propTypes = {
     PropTypes.string
   ])),
   className: PropTypes.string,
+
   /**
    * Enable Box Shadow
    */
   shadow: PropTypes.bool,
+
   /**
    * Disable Button
    */
   disabled: PropTypes.bool,
-  /**
-   * Everything you want
-   */
+
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object.node),
     PropTypes.node.isRequired
