@@ -41,6 +41,7 @@ Router.propTypes = {
    * active node
    */
   active: PropTypes.string.isRequired,
+
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node.isRequired),
     PropTypes.node.isRequired
