@@ -96,15 +96,18 @@
             <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
+import classNames from 'classnames'
 
-import './style.css'
+import styles from './styles.module.css'
 
 /**
- * > Navigation bar on top (desktop &amp; mobile)
+ * Navigation bar on top (desktop &amp; mobile)
  *
- * ### className:
- *  - __*king-ui-navbar*__
- *  - on mobile mode icon clicked (open): __*responsive*__
+ * ### Theme variables in use:
+ *  - --navbar-border
+ *  - --navbar-bg
+ *  - icon :hover:
+ *    - --filter-hover
  *
  * @component
  */
@@ -112,15 +115,10 @@ const NavBar = ({
   style,
   className,
   active,
-
-  // styling props
-  position,
-  fontSize,
-
   children
 }) => {
   // on toggle open navbar (mobile version only)
-  const [responsive, setResponsive] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     // check type of children
@@ -150,35 +148,19 @@ const NavBar = ({
     }
   }, [children, active])
 
-  // TODO handle onClickOutside (close)
+  console.log({ styles })
   return (
     (Array.isArray(children))
       ? (
           &lt;div
-            style={{
-              position,
-              fontSize,
-
-              top: 0,
-              right: 0,
-              left: 0,
-              zIndex: 100,
-              overflow: 'auto',
-              background: 'var(--navbar-bg)',
-              width: '100%',
-              height: 'fit-content',
-              minHeight: `calc(${fontSize} + .5rem)`,
-              border: 'var(--navbar-border, "2px solid black")',
-
-              ...style
-            }}
-            className={`king-ui-navbar ${
-              responsive ? 'responsive' : ''
-            } ${
-              className || ''
-            }`}
+            style={style}
+            className={classNames(
+              styles.navbar,
+              (open) &amp;&amp; styles.open,
+              (className) || className
+            )}
             onClick={() => {
-              if (responsive) setResponsive(false)
+              if (open) setOpen(false)
             }}
           >
             {children?.map((child, idx) => {
@@ -194,18 +176,15 @@ const NavBar = ({
               } else return child
             }) || null}
             &lt;a
-              className='king-ui-navbar-icon'
-              onClick={() => setResponsive(prev => !prev)}
+              className={classNames(
+                styles.icon
+              )}
+              onClick={() => setOpen(prev => !prev)}
             >&lt;FaBars />&lt;/a>
           &lt;/div>
         )
       : null
   )
-}
-
-NavBar.defaultProps = {
-  position: 'relative',
-  fontSize: '1rem'
 }
 
 NavBar.propTypes = {
@@ -214,13 +193,11 @@ NavBar.propTypes = {
     PropTypes.string
   ])),
   className: PropTypes.string,
+
   /**
-   * set active item (children) per index
+   * set active item (of children) per index
    */
   active: PropTypes.number,
-
-  position: PropTypes.string,
-  fontSize: PropTypes.string,
 
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }

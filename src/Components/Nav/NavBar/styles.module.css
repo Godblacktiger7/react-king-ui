@@ -1,0 +1,73 @@
+.navbar {
+  width: 100%;
+  height: fit-content;
+  border: var(--navbar-border, '2px solid black');
+  min-height: calc(1rem + .5rem);
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  font-size: 1rem;
+  overflow: auto;
+  background: var(--navbar-bg);
+}
+
+.item {
+  float: left;
+  display: block;
+  cursor: pointer;
+  padding: .5rem 1rem;
+  text-align: center;
+  color: var(--navbar-item-color);
+  background: var(--navbar-item-bg);
+}
+
+.item:hover:not(.active) {
+  filter: var(--filter-hover);
+}
+
+.icon {
+  display: none;
+  cursor: pointer;
+  padding: .5rem 1rem;
+  text-align: center;
+  color: var(--navbar-item-color);
+  background: var(--navbar-item-bg);
+}
+
+.active {
+  filter: var(--filter-active);
+  text-decoration: var(--navbar-item-active-decoration);
+}
+
+@media only screen and (max-width: 750px) {
+  .item:not(.active) {
+    display: none;
+  }
+
+  .icon {
+    float: right;
+    display: block;
+  }
+
+  .icon:hover {
+    filter: var(--filter-hover);
+  }
+
+  .navbar.open {
+    position: relative;
+  }
+
+  .navbar.open .item {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .navbar.open .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

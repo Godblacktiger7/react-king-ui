@@ -14,8 +14,6 @@
   /* Base Color */
   --color: rgb(190, 190, 190);
   --color-rgb: 190, 190, 190;
-  --color-input: rgb(255, 255, 255);
-  --color-input-rgb: 255, 255, 255;
   --color-secondary: rgb(15, 70, 250);
   --color-secondary-rgb: 15, 70, 250;
   --color-info: rgb(0, 180, 0);
@@ -55,20 +53,33 @@
   --filter-focus: var(--filter-hover);
   --filter-active: brightness(75%);
 
-  /* king-ui-navbar */
+  /* Component: NavBar */
   --navbar-bg: rgba(var(--color-bg-rgb), var(--bg-alpha));
-  --navbar-bg2: rgba(var(--color-secondary-rgb), var(--bg-alpha));
   --navbar-border:
     var(--border-width)
     var(--border-style)
     var(--border-color);
 
-  /* king-ui-btn */
+  --navbar-item-color: var(--color);
+  --navbar-item-bg: var(--color-secondary);
+  --navbar-item-active-decoration: underline;
+
+  /* Component: Button */
   --btn-color: var(--color);
   --btn-bg: rgba(var(--bg-color), var(--bg-alpha));
   --btn-border: var(--border-width) var(--border-style) var(--border-color);
   --btn-border-radius: var(--border-radius);
   --btn-box-shadow: var(--box-shadow);
+
+  /* Component: Input */
+  --input-color: rgb(255, 255, 255);
+  --input-bg: transparent;
+  --input-border: none;
+  --input-border-bottom:
+    var(--border-width)
+    var(--border-style)
+    var(--border-color);
+  --input-border-radius: var(--border-radius);
 }
 
 body {
@@ -103,15 +114,7 @@ body {
 }
 /* ->> */
 
-/* TODO removed (Button, ???)
 /* <<- shadow */
-.king-ui-box-shadow {
-  box-shadow: 
-    inset 0 0 .4em .125em var(--box-shadow-color),
-    0 0 .4em .15em var(--box-shadow-color);
-}
-*/
-
 .king-ui-text-shadow {
   text-shadow:
     0 0 .175em var(--bg),
@@ -186,53 +189,6 @@ body {
 /* ->> */
 
 /* TODO: remove from Theme (???) */
-/* <<- king-ui-input */
-.king-ui-input {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  text-align: center;
-  padding: 1.2em 0 .2em 0;
-}
-
-.king-ui-input input {
-  text-align: center;
-  font-size: 1em;
-  font-family: unset;
-  background: transparent;
-  color: var(--color-input);
-  width: 100%;
-  border: none;
-  border-bottom:
-    var(--border-width)
-    var(--border-style)
-    var(--border-color);
-  border-radius: var(--border-radius);
-}
-
-.king-ui-input input:focus {
-  outline: none;
-}
-
-.king-ui-input span {
-  position: absolute;
-  top: 50%;
-  font-size: .9em;
-  transition: transform .25s ease;
-  width: 100%;
-  pointer-events: none;
-}
-
-.king-ui-input input:focus + span {
-  transform: translateY(-1.5em);
-}
-
-.king-ui-input input:not([value=""]) + span {
-  transform: translateY(-1.5em);
-}
-/* ->> */
-
-/* TODO: remove from Theme (???) */
 /* <<- king-ui-notify */
 #king-ui-notify {
   display: flex;
@@ -281,7 +237,7 @@ body {
   left: 0.19em;
   bottom: .15em;
   transition: all .25s ease;
-  background: var(--color-input);
+  background: var(--input-color);
   content: '';
   height: 1.2em;
   width: 1.2em;

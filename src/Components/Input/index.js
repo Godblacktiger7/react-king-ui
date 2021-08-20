@@ -1,18 +1,29 @@
-// TODO ...
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import Text from '../Text'
 
+import styles from './styles.module.css'
+
 /**
+ * Custom Input Field
+ *
+ * ### Theme variables in use:
+ *  - --input-color
+ *  - --input-bg
+ *  - --input-border
+ *  - --input-border-bottom
+ *  - --input-border-radius
+ *
  * @component
  */
 const Input = ({
   style,
   className,
   type,
-  value,
   text,
+  value,
   fontSize,
   ...props
 }) => {
@@ -22,7 +33,10 @@ const Input = ({
         fontSize: fontSize,
         ...style?.div
       }}
-      className={`king-ui-input ${className || ''}`}
+      className={classNames(
+        styles.input,
+        (className) && className
+      )}
     >
       <input
         style={{ ...style?.input }}
@@ -65,11 +79,11 @@ Input.propTypes = {
   }),
   className: PropTypes.string,
   type: PropTypes.string,
+  text: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
   ]),
-  text: PropTypes.string,
   fontSize: PropTypes.string
 }
 
