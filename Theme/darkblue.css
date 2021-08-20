@@ -82,7 +82,11 @@ body {
   box-sizing: border-box;
   user-select: none;
   font-family: Audiowide;
-  font-size: 1rem;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
 }
 /* ->> */
 
@@ -99,8 +103,8 @@ body {
 }
 /* ->> */
 
+/* TODO removed (Button, ???)
 /* <<- shadow */
-/* TODO remove (check: Button, ???)
 .king-ui-box-shadow {
   box-shadow: 
     inset 0 0 .4em .125em var(--box-shadow-color),
@@ -168,7 +172,6 @@ body {
   --text-color: var(--color);
   --text-bg: transparent;
 
-  font-size: inherit;
   color: var(--text-color);
   background: var(--text-bg);
   padding: 0;
@@ -226,18 +229,6 @@ body {
 
 .king-ui-input input:not([value=""]) + span {
   transform: translateY(-1.5em);
-}
-/* ->> */
-
-/* TODO: remove from Theme (???) */
-/* <<- king-ui-container-root */
-.king-ui-container-root {
-  position: fixed;
-  user-select: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 /* ->> */
 
