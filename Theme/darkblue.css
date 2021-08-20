@@ -126,6 +126,7 @@ body {
 }
 /* ->> */
 
+/* TODO put in cards.module.css file inside theme (??) */
 /* <<- king-ui-card{-info, -warn, -error} */
 .king-ui-card {
   margin: .1rem;
