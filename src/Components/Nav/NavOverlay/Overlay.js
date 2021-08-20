@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// <<- default: Overlay
 const Overlay = ({
   style,
+  className,
   children,
   ...props
 }) => {
   return (
-    <div className="king-ui-nav-overlay"
+    <div className={className}
       style={style}
       {...props}
     >
@@ -24,11 +24,11 @@ Overlay.propTypes = {
       PropTypes.string
     ])
   ),
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ])
 }
-// ->>
 
 export default Overlay

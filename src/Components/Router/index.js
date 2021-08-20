@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
  *
  * @component
  */
-const Router = ({ active, children }) => {
+const Router = ({ active, children, ...props }) => {
   const [route, setRoute] = useState()
   const pages = useRef([])
 
@@ -30,9 +30,9 @@ const Router = ({ active, children }) => {
   ], [active])
 
   return (
-    <>
+    <div {...props}>
       {route}
-    </>
+    </div>
   )
 }
 

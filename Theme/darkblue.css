@@ -53,17 +53,6 @@
   --filter-focus: var(--filter-hover);
   --filter-active: brightness(75%);
 
-  /* Component: NavBar */
-  --navbar-bg: rgba(var(--color-bg-rgb), var(--bg-alpha));
-  --navbar-border:
-    var(--border-width)
-    var(--border-style)
-    var(--border-color);
-
-  --navbar-item-color: var(--color);
-  --navbar-item-bg: var(--color-secondary);
-  --navbar-item-active-decoration: underline;
-
   /* Component: Button */
   --btn-color: var(--color);
   --btn-bg: rgba(var(--bg-color), var(--bg-alpha));
@@ -80,6 +69,20 @@
     var(--border-style)
     var(--border-color);
   --input-border-radius: var(--border-radius);
+
+  /* Component: NavBar */
+  --navbar-bg: rgba(var(--color-bg-rgb), var(--bg-alpha));
+  --navbar-border:
+    var(--border-width)
+    var(--border-style)
+    var(--border-color);
+
+  --navbar-item-color: var(--color);
+  --navbar-item-bg: var(--color-secondary);
+  --navbar-item-active-decoration: underline;
+
+  /* Component: NavOverlay */
+  --navoverlay-bg: rgba(var(--bg-rgb), var(--bg-alpha));
 }
 
 body {

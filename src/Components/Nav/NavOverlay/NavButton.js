@@ -4,20 +4,15 @@ import { FaBars } from 'react-icons/fa'
 
 import Button from '../../Button'
 
-// <<- default: NavButton
 const NavButton = ({
   style,
+  className,
   ...props
 }) => {
+  console.log({ style, className, props })
   return (
-    <div className='king-ui-nav-button'
-      style={{
-        ...style
-      }}
-    >
-      <Button
-        {...props}
-      >
+    <div className={className} style={style}>
+      <Button {...props}>
         <FaBars style={{ fontSize: 'inherit' }} />
       </Button>
     </div>
@@ -30,8 +25,8 @@ NavButton.propTypes = {
       PropTypes.number,
       PropTypes.string
     ])
-  )
+  ),
+  className: PropTypes.string
 }
-// ->>
 
 export default NavButton

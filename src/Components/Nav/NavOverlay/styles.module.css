@@ -1,16 +1,33 @@
-.king-ui-nav-button {
+.tr {
+  top: .5rem;
+  right: .5rem;
+}
+
+.tl {
+  top: .5rem;
+  left: .5rem;
+}
+
+.br {
+  bottom: .5rem;
+  right: .5rem;
+}
+
+.bl {
+  bottom: .5rem;
+  left: .5rem;
+}
+
+.navbutton {
   position: fixed;
   z-index: 100;
 }
 
-.king-ui-nav-button button {
+.navbutton button {
   font-size: inherit;
-  font-family: inherit;
 }
 
-.king-ui-nav-overlay {
-  --btn-bg: rgba(var(--bg-rgb), var(--bg-alpha));
-
+.overlay {
   display: flex;
   position: fixed;
   z-index: 100;
@@ -19,11 +36,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--btn-bg);
+  background: var(--navoverlay-bg);
   width: 100vw;
   height: 100vh;
 }
 
-.king-ui-nav-overlay > * {
+.overlay > * {
   margin: .25em;
 }
