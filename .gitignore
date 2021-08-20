@@ -1,6 +1,6 @@
 node_modules/
 dist/
 .cache/
-/examples/*/build/
+/example/build/
 
 *.tgz

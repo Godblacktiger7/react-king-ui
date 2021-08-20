@@ -10,11 +10,11 @@ import styles from './styles.module.css'
  * Custom Input Field
  *
  * ### Theme variables in use:
- *  - --input-color
- *  - --input-bg
- *  - --input-border
- *  - --input-border-bottom
- *  - --input-border-radius
+ *  * --input-color
+ *  * --input-bg
+ *  * --input-border
+ *  * --input-border-bottom
+ *  * --input-border-radius
  *
  * @component
  */

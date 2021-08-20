@@ -9,10 +9,10 @@ import styles from './styles.module.css'
  * Navigation bar on top (desktop & mobile)
  *
  * ### Theme variables in use:
- *  - --navbar-border
- *  - --navbar-bg
- *  - icon :hover:
- *    - --filter-hover
+ *  * --navbar-border
+ *  * --navbar-bg
+ *  * icon :hover:
+ *    * --filter-hover
  *
  * @component
  */

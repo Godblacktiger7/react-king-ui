@@ -8,19 +8,19 @@ import styles from './styles.module.css'
  * React Button Component
  *
  * ### Theme variables in use:
- *  - --btn-color
- *  - --btn-bg
- *  - --btn-border
- *  - --btn-border-radius
- *  - --btn-box-shadow
- *  - :hover
- *    - --filter-hover
- *  - :focus
- *    - --filter-focus
- *  - :active
- *    - --filter-active
- *  - :disabled
- *    - --filter-disabled
+ *  * --btn-color
+ *  * --btn-bg
+ *  * --btn-border
+ *  * --btn-border-radius
+ *  * --btn-box-shadow
+ *  * :hover
+ *    * --filter-hover
+ *  * :focus
+ *    * --filter-focus
+ *  * :active
+ *    * --filter-active
+ *  * :disabled
+ *    * --filter-disabled
  *
  * @component
  */

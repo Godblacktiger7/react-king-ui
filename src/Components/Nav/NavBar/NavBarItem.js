@@ -6,12 +6,12 @@ import styles from './styles.module.css'
 
 /**
  * ### Theme variables in use:
- *  - --navbar-item-color
- *  - --navbar-item-bg
- *  - --navbar-item-active-decoration
- *  - --filter-active (for active item)
- *  - :hover
- *    - --filter-hover
+ *  * --navbar-item-color
+ *  * --navbar-item-bg
+ *  * --navbar-item-active-decoration
+ *  * --filter-active (for active item)
+ *  * :hover
+ *    * --filter-hover
  *
  * @component
  */
