@@ -12,11 +12,15 @@ import styles from './styles.module.css'
  *  - --btn-bg
  *  - --btn-border
  *  - --btn-border-radius
- *  - :hover: --filter-hover
- *  - :focus: --filter-focus
- *  - :active: --filter-active
- *  - :disabled: --filter-disabled
- *  - *shadow*: --btn-box-shadow
+ *  - --btn-box-shadow
+ *  - :hover
+ *    - --filter-hover
+ *  - :focus
+ *    - --filter-focus
+ *  - :active
+ *    - --filter-active
+ *  - :disabled
+ *    - --filter-disabled
  *
  * @component
  */
