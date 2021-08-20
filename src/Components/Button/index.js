@@ -1,10 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import styles from './styles.module.css'
 
 /**
  * React Button Component
+ *
+ * ### Theme variables in use:
+ *  - --btn-color
+ *  - --btn-bg
+ *  - --btn-border
+ *  - --btn-border-radius
+ *  - :hover: --filter-hover
+ *  - :focus: --filter-focus
+ *  - :active: --filter-active
+ *  - :disabled: --filter-disabled
+ *  - *shadow*: --btn-box-shadow
  *
  * @component
  */
@@ -19,7 +31,11 @@ const Button = ({
   return (
     <button
       style={style}
-      className={`${styles.btn} ${(shadow) ? styles.shadow : ''} ${className || ''}`}
+      className={classNames(
+        styles.btn,
+        (shadow) && styles.shadow,
+        (className) && className
+      )}
       disabled={disabled}
       {...props}
     >
@@ -34,17 +50,17 @@ Button.propTypes = {
     PropTypes.string
   ])),
   className: PropTypes.string,
+
   /**
    * Enable Box Shadow
    */
   shadow: PropTypes.bool,
+
   /**
    * Disable Button
    */
   disabled: PropTypes.bool,
-  /**
-   * Everything you want
-   */
+
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object.node),
     PropTypes.node.isRequired
