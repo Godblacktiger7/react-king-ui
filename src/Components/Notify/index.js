@@ -1,20 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import Text from '../Text'
 
-// notify container ref <id>: ref to notify container
-const ncRef = {}
+import styles from './styles.module.css'
 
-const levelClassNames = {
-  info: 'king-ui-notify king-ui-card-info',
-  warn: 'king-ui-notify king-ui-card-warn',
-  error: 'king-ui-notify king-ui-card-error'
-}
+/** ref: points to NotifyContainer (per ID) */
+const ncRef = {}
 
 // <<- Card
 const Card = ({
-  className,
   cardID,
   card,
   timeout,
@@ -33,7 +29,12 @@ const Card = ({
         display: 'flex',
         flexDirection: 'column'
       }}
-      className={className}
+      className={classNames(
+        styles.notify,
+        (['info', 'warn', 'error'].includes(card?.level))
+          ? `king-ui-card-${card.level}`
+          : 'king-ui-card'
+      )}
       {...props}
     >
       {
@@ -63,7 +64,6 @@ const Card = ({
 }
 
 Card.propTypes = {
-  className: PropTypes.string,
   card: PropTypes.object,
   cardID: PropTypes.oneOfType([
     PropTypes.string.isRequired,
@@ -81,6 +81,7 @@ Card.propTypes = {
  * @property {string} level - choice: 'info', 'warn', 'error'
  * @property {Any} ...props
  */
+
 /**
  * notify function for add notification card to the NotifyContainer
  *
@@ -91,20 +92,15 @@ export const notify = ({
   title = null,
   message,
   level = 'info',
-  id = 'king-ui-notify',
+  id = 'notify',
   ...props
 } = {}) => {
-  const className = levelClassNames[level]
-
-  if (!className) throw new Error(`Unknown level "${level}"`)
-
   const cardID = ncRef[id].cards.current.length
-  const card = { id: cardID, title, message }
+  const card = { id: cardID, title, message, level }
 
   ncRef[id].addCard((
     <Card key={cardID}
       cardID={cardID}
-      className={className}
       card={card}
       timeout={6000}
       onClick={() => ncRef[id].removeCard(cardID)}
@@ -162,6 +158,7 @@ const NotifyContainer = ({
   return (
     <div
       id={id}
+      className={styles.container}
       style={{
         display: (cards.current.length)
           ? 'flex'
@@ -177,11 +174,13 @@ const NotifyContainer = ({
 }
 
 NotifyContainer.defaultProps = {
-  id: 'king-ui-notify'
+  id: 'notify'
 }
 
 NotifyContainer.propTypes = {
   style: PropTypes.object,
+
+  /** Notify Container ID */
   id: PropTypes.string
 }
 // ->>

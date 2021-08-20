@@ -6,6 +6,10 @@
   border-radius: var(--btn-border-radius);
 }
 
+.btn > * {
+  color: var(--btn-color);
+}
+
 .btn:hover {
   filter: var(--filter-hover);
 }
@@ -25,5 +29,6 @@
 }
 
 .shadow {
+  color: var(--btn-box-shadow-color);
   box-shadow: var(--btn-box-shadow);
 }

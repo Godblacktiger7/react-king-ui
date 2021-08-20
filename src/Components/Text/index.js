@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 // <<- default: Text
 /**
- * ### className
- *  - __*king-ui-text*__
- *  - __*king-ui-text--disabled*__
+ * ### Theme variables in use:
+ *  * --color
+ *  * --text-shadow
  *
  * @component
  */
@@ -19,7 +19,6 @@ const Text = ({
   italic,
   oblique,
   underline,
-  disabled,
   children,
   ...props
 }) => {
@@ -44,15 +43,16 @@ const Text = ({
         textDecoration: (underline)
           ? 'underline'
           : 'unset',
+        color: 'var(--color)',
+        background: 'transparent',
+        padding: 0,
+        margin: 0,
+        textShadow: (shadow)
+          ? 'var(--text-shadow)'
+          : 'unset',
         ...style
       }}
-      className={`king-ui-text ${
-        (shadow)
-          ? 'king-ui-text-shadow'
-          : ''} ${
-        (disabled)
-          ? 'king-ui-text--disabled'
-          : ''} ${className || ''}`}
+      className={className}
       {...props}
     >
       {children}
@@ -63,6 +63,7 @@ const Text = ({
 Text.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
+
   fontSize: PropTypes.string,
   shadow: PropTypes.bool,
   bold: PropTypes.bool,
@@ -70,7 +71,7 @@ Text.propTypes = {
   italic: PropTypes.bool,
   oblique: PropTypes.bool,
   underline: PropTypes.bool,
-  disabled: PropTypes.bool,
+
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object.node),
     PropTypes.node.isRequired

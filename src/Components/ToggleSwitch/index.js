@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-// <<- default: ToggleSwitch
+import styles from './styles.module.css'
+
 /**
  * ToggleSwitch Button (enable/disable)
+ *
+ * ### Theme variables in use:
+ *  * ...
  *
  * @component
  */
@@ -15,15 +20,19 @@ const ToggleSwitch = ({
 }) => {
   return (
     <label
-      className={`king-ui-toggle-switch ${className || ''}`}
+      className={classNames(
+        styles.switch,
+        (className) && className
+      )}
       {...props}
     >
       <input
+        className={styles.input}
         type='checkbox'
         checked={isToggled}
         onChange={onChange}
       />
-      <span />
+      <span className={styles.span} />
     </label>
   )
 }
@@ -33,6 +42,5 @@ ToggleSwitch.propTypes = {
   isToggled: PropTypes.bool,
   onChange: PropTypes.func
 }
-// ->>
 
 export default ToggleSwitch

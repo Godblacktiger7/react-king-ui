@@ -35,11 +35,11 @@
   --border-color-rgb: var(--color-secondary-rgb);
 
   /* Shadow */
-  --box-shadow-color: var(--color-secondary);
+  --box-shadow-color: rgba(var(--color-secondary-rgb), var(--bg-alpha));
   --box-shadow-color-rgb: var(--color-secondary-rgb);
   --box-shadow: 
-    inset 0 0 .4em .125em var(--box-shadow-color),
-    0 0 .4em .15em var(--box-shadow-color);
+    inset 0 0 .4em .125em,
+    0 0 .4em .15em;
   --text-shadow-color: var(--color-secondary);
   --text-shadow-color-rgb: var(--color-secondary-rgb);
   --text-shadow: 
@@ -59,6 +59,7 @@
   --btn-border: var(--border-width) var(--border-style) var(--border-color);
   --btn-border-radius: var(--border-radius);
   --btn-box-shadow: var(--box-shadow);
+  --btn-box-shadow-color: var(--box-shadow-color);
 
   /* Component: Input */
   --input-color: rgb(255, 255, 255);
@@ -77,6 +78,7 @@
     var(--border-style)
     var(--border-color);
 
+  /* Component: NavBarItem */
   --navbar-item-color: var(--color);
   --navbar-item-bg: var(--color-secondary);
   --navbar-item-active-decoration: underline;
@@ -114,16 +116,6 @@ body {
 ::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-/* ->> */
-
-/* TODO remove */
-/* <<- shadow */
-.king-ui-text-shadow {
-  text-shadow:
-    0 0 .175em var(--bg),
-    0 0 .175em var(--text-shadow-color),
-    0 0 .350em var(--text-shadow-color);
 }
 /* ->> */
 
@@ -171,43 +163,6 @@ body {
     var(--border-width)
     var(--border-style)
     var(--color-error);
-}
-/* ->> */
-
-/* TODO: remove from Theme (???) */
-/* <<- king-ui-text */
-.king-ui-text {
-  --text-color: var(--color);
-  --text-bg: transparent;
-
-  color: var(--text-color);
-  background: var(--text-bg);
-  padding: 0;
-  margin: 0;
-}
-
-.king-ui-text--disabled {
-  cursor: default;
-  pointer-events: none;
-  filter: var(--filter-disabled);
-}
-/* ->> */
-
-/* TODO: remove from Theme (???) */
-/* <<- king-ui-notify */
-#king-ui-notify {
-  display: flex;
-  position: absolute;
-  z-index: 999;
-  flex-direction: column;
-  overflow-y: auto;
-  width: 100%;
-  max-width: 30ch;
-}
-
-.king-ui-notify {
-  display: flex;
-  flex-direction: column;
 }
 /* ->> */
 
