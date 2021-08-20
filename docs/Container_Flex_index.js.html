@@ -97,10 +97,7 @@
 import PropTypes from 'prop-types'
 
 /**
- * > simple flex container (with some defaults)
- *
- * ### className:
- *  - __*king-ui-flex*__
+ * Simple Flex Container
  *
  * @component
  */
@@ -122,7 +119,7 @@ const Flex = ({
         flexFlow: flow,
         ...style
       }}
-      className={`king-ui-flex ${className || ''}`}
+      className={className}
       {...props}
     >
       {children}

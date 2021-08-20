@@ -1,10 +1,10 @@
-.king-ui-flex {
+.flex {
   border: .1px solid rgb(255,0,0);
   height: 100vh;
   overflow: auto;
 }
 
-.king-ui-flex > * {
+.flex > * {
   margin: .5rem;
   font-size: 1.5em;
 }
