@@ -25,11 +25,11 @@ import styles from './styles.module.css'
  * @component
  */
 const Button = ({
-  style,
-  className,
-  shadow,
-  disabled,
-  children,
+  style = {},
+  className = '',
+  shadow = false,
+  disabled = false,
+  children = null,
   ...props
 }) => {
   return (
@@ -66,7 +66,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
 
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.object.node),
+    PropTypes.arrayOf(PropTypes.node),
     PropTypes.node.isRequired
   ])
 }

@@ -6,6 +6,14 @@ import Text from '../Text'
 
 import styles from './styles.module.css'
 
+/**
+ * @typedef {Object} _card
+ * @property {string} title
+ * @property {string} message
+ * @property {string} level - choice: 'info', 'warn', 'error'
+ * @property {any} props
+ */
+
 /** ref: points to NotifyContainer (per ID) */
 const ncRef = {}
 
@@ -75,26 +83,20 @@ Card.propTypes = {
 
 // <<- export: func: notify
 /**
- * @typedef {Object} Card
- * @property {string} title
- * @property {string} message
- * @property {string} level - choice: 'info', 'warn', 'error'
- * @property {Any} ...props
- */
-
-/**
- * notify function for add notification card to the NotifyContainer
- *
  * @function
- * @param {Card}
+ * @param {(string|PropTypes.node)} title
+ * @param {(string|PropTypes.node)} message
+ * @param {string} level
  */
-export const notify = ({
-  title = null,
+export const notify = (
+  title,
   message,
   level = 'info',
-  id = 'notify',
-  ...props
-} = {}) => {
+  {
+    id = 'notify',
+    ...props
+  }
+) => {
   const cardID = ncRef[id].cards.current.length
   const card = { id: cardID, title, message, level }
 
@@ -117,8 +119,8 @@ export const notify = ({
  * @component
  */
 const NotifyContainer = ({
-  style,
-  id,
+  style = {},
+  id = '',
   ...props
 }) => {
   const render = useState(false)[1]
@@ -129,12 +131,16 @@ const NotifyContainer = ({
   useEffect(() => {
     ncRef[id] = {
       container: containerRef,
+      /**
+       * @param {_card} card
+       */
       addCard: (card) => {
+        if (!card) throw new Error('param: "card" missing!')
         cards.current.unshift(card)
         render(prev => !prev)
       },
       cards: cards,
-      removeCard: (cardID) => {
+      removeCard: (cardID = '') => {
         let index = -1
 
         for (const card of cards.current) {

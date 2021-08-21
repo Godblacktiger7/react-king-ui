@@ -19,15 +19,15 @@ const Router = ({ active, children, ...props }) => {
     pages.current = (children instanceof Array) ? children : [children]
   }, [children])
 
-  useEffect(() => [
-    setRoute(() => pages.current.filter(
-      child => (
-        (child.props.route === active) ||
-        (child.type.displayName === active) ||
-        (child.type.name === active)
-      )
-    ))
-  ], [active])
+  useEffect(() => {
+    setRoute(() => {
+      for (const child of pages.current) {
+        if ([child.props.route, child.type.displayName, child.type.name].includes(active)) {
+          return child
+        }
+      }
+    })
+  }, [active])
 
   return (
     <div {...props}>
